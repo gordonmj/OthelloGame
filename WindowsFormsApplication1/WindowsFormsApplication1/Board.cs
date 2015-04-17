@@ -23,17 +23,17 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public void layoutBoard(Panel p){
+        public void layoutBoard(ref Panel p){
                         //print squares
             System.Drawing.Graphics pG = p.CreateGraphics();
-            int width = p.Width;
-            int height = p.Height;
-
+            int width = (p.Width-1)/8;
+            int height = (p.Height-1)/8;
+            Pen border = new Pen(new SolidBrush(Color.Black), 10);
             for (int r = 0; r < 8; r++)
             {
                 for (int c = 0; c < 8; c++)
                 {
-                    pG.FillRectangle(new SolidBrush(Color.Green), width * c, height * r, width, height);
+                    //pG.FillRectangle(new SolidBrush(Color.Green), width * c, height * r, width, height);
                     pG.DrawRectangle(new Pen(new SolidBrush(Color.Black)), width * c, height * r, width, height);
                 }
             }

@@ -12,13 +12,14 @@ namespace WindowsFormsApplication1
     {
         private Form1 form;
         private Panel boardPanel, leftBarPanel, rightBarPanel, scoreBoardPanel;
+        public Board board;
 
         public Game()
         {
 
         }
 
-        public Game(Form1 f, Panel bp, Panel lbp, Panel rbp, Panel sbp)
+        public Game(Form1 f, ref Panel bp, ref Panel lbp, ref Panel rbp, ref Panel sbp)
         {
             form = f;
             boardPanel = bp;
@@ -29,8 +30,8 @@ namespace WindowsFormsApplication1
 
         public void Start()
         {
-            Board board = new Board();
-            board.layoutBoard(boardPanel);
+            board = new Board();
+            board.layoutBoard(ref boardPanel);
         }
     }
 }
