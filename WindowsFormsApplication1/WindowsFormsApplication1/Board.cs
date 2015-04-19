@@ -8,9 +8,13 @@ using System.Drawing;
 
 namespace WindowsFormsApplication1
 {
+
     class Board
     {
+        public SolidBrush blackBrush = new SolidBrush(Color.Black);
+
         Space[,] board = new Space[8, 8];
+        
         public Board()
         {
             //make squares
@@ -28,7 +32,6 @@ namespace WindowsFormsApplication1
             System.Drawing.Graphics pG = p.CreateGraphics();
             int width = (p.Width-1)/8;
             int height = (p.Height-1)/8;
-            SolidBrush blackBrush = new SolidBrush(Color.Black);
             Pen border = new Pen(blackBrush, 10);
             for (int r = 0; r < 8; r++)
             {
@@ -39,9 +42,27 @@ namespace WindowsFormsApplication1
                     if ((r==2 || r==6) && (c==2 || c==6))
                     {
                         pG.FillEllipse(blackBrush, (width * c) - 4, (height * r) - 4, 10, 10);
-                    }
+                    }//if
+                }//for
+            }//for
+        }//method
+
+        public void drawStack(Panel p, int discsLeft)
+        {
+            System.Drawing.Graphics pG = p.CreateGraphics();
+            int width = (p.Width - 10);
+            int height = (p.Height - 5) / 64;
+            for (int i = 0; i < discsLeft*2; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    pG.FillRectangle(blackBrush, 5, i * height, width, height);
+                }
+                else
+                {
+                    pG.FillRectangle(new SolidBrush(Color.White), 5, i * height, width, height);
                 }
             }
         }
-    }
-}
+    }//class
+}//namespace

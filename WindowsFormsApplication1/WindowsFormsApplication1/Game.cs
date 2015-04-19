@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
         public void Start()
         {
             board = new Board();
-            board.layoutBoard(ref boardPanel);
+//            board.layoutBoard(ref boardPanel);
         }
     }
 }

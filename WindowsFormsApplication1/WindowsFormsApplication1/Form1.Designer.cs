@@ -33,12 +33,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.Green;
-            this.panel1.Location = new System.Drawing.Point(102, 24);
+            this.panel1.Location = new System.Drawing.Point(275, 24);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(512, 512);
             this.panel1.TabIndex = 0;
@@ -47,24 +50,29 @@
             // menuStrip2
             // 
             this.menuStrip2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(712, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(1155, 24);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
             // panel2
             // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel2.Location = new System.Drawing.Point(0, 24);
+            this.panel2.Location = new System.Drawing.Point(173, 24);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(102, 512);
             this.panel2.TabIndex = 2;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel6
             // 
+            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel6.Location = new System.Drawing.Point(0, 532);
+            this.panel6.Location = new System.Drawing.Point(173, 532);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(718, 73);
             this.panel6.TabIndex = 4;
@@ -72,17 +80,27 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel3.Location = new System.Drawing.Point(609, 24);
+            this.panel3.Location = new System.Drawing.Point(782, 24);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(106, 512);
             this.panel3.TabIndex = 5;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 608);
+            this.BackColor = System.Drawing.SystemColors.Desktop;
+            this.ClientSize = new System.Drawing.Size(1155, 608);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -90,6 +108,8 @@
             this.Controls.Add(this.menuStrip2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,6 +122,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 
