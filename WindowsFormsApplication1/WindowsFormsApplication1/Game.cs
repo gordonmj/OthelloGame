@@ -10,8 +10,6 @@ namespace WindowsFormsApplication1
 {
     class Game
     {
-        private Form1 form;
-        private Panel boardPanel, leftBarPanel, rightBarPanel, scoreBoardPanel;
         public Board board;
 
         public Game()
@@ -19,19 +17,16 @@ namespace WindowsFormsApplication1
 
         }
 
-        public Game(Form1 f, ref Panel bp, ref Panel lbp, ref Panel rbp, ref Panel sbp)
-        {
-            form = f;
-            boardPanel = bp;
-            leftBarPanel = lbp;
-            rightBarPanel = rbp;
-            scoreBoardPanel = sbp;
-        }
 
-        public void Start()
+        public Board getBoard()
         {
             board = new Board();
-//            board.layoutBoard(ref boardPanel);
+            return board;
+        }
+
+        public DiscStack getStack()
+        {
+            return new DiscStack();
         }
     }
 }

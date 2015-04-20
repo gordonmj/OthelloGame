@@ -34,6 +34,8 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.placeInitialConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +53,7 @@
             // 
             this.menuStrip2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gameToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
@@ -95,17 +98,33 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // gameToolStripMenuItem
+            // 
+            this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.placeInitialConfigToolStripMenuItem});
+            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.gameToolStripMenuItem.Text = "Game";
+            // 
+            // placeInitialConfigToolStripMenuItem
+            // 
+            this.placeInitialConfigToolStripMenuItem.Name = "placeInitialConfigToolStripMenuItem";
+            this.placeInitialConfigToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.placeInitialConfigToolStripMenuItem.Text = "Place initial config";
+            this.placeInitialConfigToolStripMenuItem.Click += new System.EventHandler(this.placeInitialConfigToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Desktop;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1155, 608);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip2);
+            this.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.Name = "Form1";
             this.Text = "Form1";
             this.menuStrip2.ResumeLayout(false);
@@ -123,6 +142,8 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem placeInitialConfigToolStripMenuItem;
     }
 }
 

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board.cs" />
+    <Compile Include="DiscStack.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
