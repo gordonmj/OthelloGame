@@ -23,8 +23,12 @@ namespace WindowsFormsApplication1
         private System.Drawing.Graphics pG6;
         //private System.Drawing.Graphics pG7;
         Board board;
-        DiscStack left;
-        DiscStack right;
+        DiscStack leftStack;
+        DiscStack rightStack;
+        Player leftPlayer;
+        Player rightPlayer;
+        Player blackPlayer;
+        Player whitePlayer;
 
         public Form1()
         {
@@ -35,8 +39,11 @@ namespace WindowsFormsApplication1
 
             game = new Game();
             board = game.getBoard();
-            left = game.getStack();
-            right = game.getStack();
+            leftStack = game.getStack();
+            rightStack = game.getStack();
+            leftPlayer = game.getPlayer();
+            rightPlayer = game.getPlayer();
+
         }
 
         //private void panel5_Paint(object sender, PaintEventArgs e)
@@ -53,21 +60,21 @@ namespace WindowsFormsApplication1
 
         private void panel6_Paint(object sender, PaintEventArgs e)
         {
-            pG6 = panel6.CreateGraphics();
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
             pG2 = panel2.CreateGraphics();
-            left.setUpStack(pG2, panel2);
-            left.drawStack(32);
+            leftStack.setUpStack(pG2, panel2);
+            leftStack.drawStack(32);
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
             pG3 = panel3.CreateGraphics();
-            right.setUpStack(pG3, panel3);
-            right.drawStack(32);
+            rightStack.setUpStack(pG3, panel3);
+            rightStack.drawStack(32);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -80,5 +87,38 @@ namespace WindowsFormsApplication1
             game.board.initConfig();
         }
 
+        private void leftPlayerInfo_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void rightPlayerInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chooseColors()
+        {
+                        MessageBox.Show("Choosing colors");
+            blackPlayer = game.assignColor(leftPlayer, rightPlayer);
+            if (ReferenceEquals(blackPlayer, leftPlayer))
+            {
+                whitePlayer = rightPlayer;
+                leftPlayerInfo.ForeColor = Color.Black;
+                rightPlayerInfo.ForeColor = Color.White;
+                MessageBox.Show("Left is black and right is white.");
+            }
+            else
+            {
+                leftPlayerInfo.ForeColor = Color.White;
+                rightPlayerInfo.ForeColor = Color.Black;
+                whitePlayer = leftPlayer;
+                MessageBox.Show("Right is black and left is white.");
+            }
+
+        }
+        private void chooseColorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chooseColors();
+        }
     }
 }

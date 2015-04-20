@@ -30,13 +30,20 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.placeInitialConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chooseColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.leftScore = new System.Windows.Forms.Panel();
+            this.ScoreRight = new System.Windows.Forms.Label();
+            this.ScoreLeft = new System.Windows.Forms.Label();
+            this.WhoseTurn = new System.Windows.Forms.Label();
+            this.rightPlayerInfo = new System.Windows.Forms.Label();
+            this.leftPlayerInfo = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.menuStrip2.SuspendLayout();
+            this.leftScore.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -61,47 +68,11 @@
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel2.Location = new System.Drawing.Point(173, 24);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(102, 512);
-            this.panel2.TabIndex = 2;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // panel6
-            // 
-            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel6.Location = new System.Drawing.Point(173, 532);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(718, 73);
-            this.panel6.TabIndex = 4;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel3.Location = new System.Drawing.Point(782, 24);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(106, 512);
-            this.panel3.TabIndex = 5;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
             // gameToolStripMenuItem
             // 
             this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.placeInitialConfigToolStripMenuItem});
+            this.placeInitialConfigToolStripMenuItem,
+            this.chooseColorsToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.gameToolStripMenuItem.Text = "Game";
@@ -113,13 +84,118 @@
             this.placeInitialConfigToolStripMenuItem.Text = "Place initial config";
             this.placeInitialConfigToolStripMenuItem.Click += new System.EventHandler(this.placeInitialConfigToolStripMenuItem_Click);
             // 
+            // chooseColorsToolStripMenuItem
+            // 
+            this.chooseColorsToolStripMenuItem.Name = "chooseColorsToolStripMenuItem";
+            this.chooseColorsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.chooseColorsToolStripMenuItem.Text = "Choose colors";
+            this.chooseColorsToolStripMenuItem.Click += new System.EventHandler(this.chooseColorsToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel2.Location = new System.Drawing.Point(173, 24);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(102, 512);
+            this.panel2.TabIndex = 2;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // leftScore
+            // 
+            this.leftScore.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.leftScore.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.leftScore.Controls.Add(this.ScoreRight);
+            this.leftScore.Controls.Add(this.ScoreLeft);
+            this.leftScore.Controls.Add(this.WhoseTurn);
+            this.leftScore.Controls.Add(this.rightPlayerInfo);
+            this.leftScore.Controls.Add(this.leftPlayerInfo);
+            this.leftScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leftScore.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.leftScore.Location = new System.Drawing.Point(173, 532);
+            this.leftScore.Name = "leftScore";
+            this.leftScore.Size = new System.Drawing.Size(715, 73);
+            this.leftScore.TabIndex = 4;
+            this.leftScore.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            // 
+            // ScoreRight
+            // 
+            this.ScoreRight.AutoSize = true;
+            this.ScoreRight.Location = new System.Drawing.Point(604, 38);
+            this.ScoreRight.Name = "ScoreRight";
+            this.ScoreRight.Size = new System.Drawing.Size(110, 29);
+            this.ScoreRight.TabIndex = 4;
+            this.ScoreRight.Text = "Score: 0";
+            // 
+            // ScoreLeft
+            // 
+            this.ScoreLeft.AutoSize = true;
+            this.ScoreLeft.Location = new System.Drawing.Point(4, 42);
+            this.ScoreLeft.Name = "ScoreLeft";
+            this.ScoreLeft.Size = new System.Drawing.Size(110, 29);
+            this.ScoreLeft.TabIndex = 3;
+            this.ScoreLeft.Text = "Score: 0";
+            // 
+            // WhoseTurn
+            // 
+            this.WhoseTurn.AutoSize = true;
+            this.WhoseTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WhoseTurn.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.WhoseTurn.Location = new System.Drawing.Point(282, 4);
+            this.WhoseTurn.Name = "WhoseTurn";
+            this.WhoseTurn.Size = new System.Drawing.Size(163, 31);
+            this.WhoseTurn.TabIndex = 2;
+            this.WhoseTurn.Text = "Not Started";
+            this.WhoseTurn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // rightPlayerInfo
+            // 
+            this.rightPlayerInfo.AutoSize = true;
+            this.rightPlayerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightPlayerInfo.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.rightPlayerInfo.Location = new System.Drawing.Point(542, 7);
+            this.rightPlayerInfo.Name = "rightPlayerInfo";
+            this.rightPlayerInfo.Size = new System.Drawing.Size(174, 31);
+            this.rightPlayerInfo.TabIndex = 1;
+            this.rightPlayerInfo.Text = "Right Player";
+            this.rightPlayerInfo.Click += new System.EventHandler(this.rightPlayerInfo_Click);
+            // 
+            // leftPlayerInfo
+            // 
+            this.leftPlayerInfo.AutoSize = true;
+            this.leftPlayerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leftPlayerInfo.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.leftPlayerInfo.Location = new System.Drawing.Point(3, 7);
+            this.leftPlayerInfo.Name = "leftPlayerInfo";
+            this.leftPlayerInfo.Size = new System.Drawing.Size(155, 31);
+            this.leftPlayerInfo.TabIndex = 0;
+            this.leftPlayerInfo.Text = "Left Player";
+            this.leftPlayerInfo.Click += new System.EventHandler(this.leftPlayerInfo_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel3.Location = new System.Drawing.Point(782, 24);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(106, 512);
+            this.panel3.TabIndex = 5;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1155, 608);
-            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.leftScore);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -129,6 +205,8 @@
             this.Text = "Form1";
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            this.leftScore.ResumeLayout(false);
+            this.leftScore.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,11 +217,17 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel leftScore;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem placeInitialConfigToolStripMenuItem;
+        private System.Windows.Forms.Label leftPlayerInfo;
+        private System.Windows.Forms.Label rightPlayerInfo;
+        private System.Windows.Forms.ToolStripMenuItem chooseColorsToolStripMenuItem;
+        private System.Windows.Forms.Label ScoreLeft;
+        private System.Windows.Forms.Label WhoseTurn;
+        private System.Windows.Forms.Label ScoreRight;
     }
 }
 
