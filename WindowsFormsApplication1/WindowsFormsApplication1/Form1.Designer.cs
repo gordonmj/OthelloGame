@@ -42,6 +42,7 @@
             this.rightPlayerScore = new System.Windows.Forms.Label();
             this.leftPlayerScore = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.switchTurnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.leftScore.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +74,8 @@
             // 
             this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.placeInitialConfigToolStripMenuItem,
-            this.chooseColorsToolStripMenuItem});
+            this.chooseColorsToolStripMenuItem,
+            this.switchTurnToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.gameToolStripMenuItem.Text = "Game";
@@ -191,6 +193,13 @@
             this.panel3.TabIndex = 5;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
+            // switchTurnToolStripMenuItem
+            // 
+            this.switchTurnToolStripMenuItem.Name = "switchTurnToolStripMenuItem";
+            this.switchTurnToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.switchTurnToolStripMenuItem.Text = "Switch turn";
+            this.switchTurnToolStripMenuItem.Click += new System.EventHandler(this.switchTurnToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,6 +239,7 @@
         private System.Windows.Forms.Label LeftDiscsLeft;
         private System.Windows.Forms.Label WhoseTurn;
         private System.Windows.Forms.Label RightDiscsLeft;
+        private System.Windows.Forms.ToolStripMenuItem switchTurnToolStripMenuItem;
     }
 }
 

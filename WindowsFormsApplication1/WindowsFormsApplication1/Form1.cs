@@ -144,8 +144,8 @@ namespace WindowsFormsApplication1
                 whitePlayer = leftPlayer;
                 MessageBox.Show("Right is black and left is white.");
             }
-
         }
+
         private void chooseColorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (gameStarted)
@@ -160,13 +160,18 @@ namespace WindowsFormsApplication1
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show("Point clicked is " + e.Location);
             board.tryToPlace(e.Location, blackTurn);
         }
 
         private void WhoseTurn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void switchTurnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            blackTurn = !blackTurn;
+            setTurn();
         }
     }
 }
