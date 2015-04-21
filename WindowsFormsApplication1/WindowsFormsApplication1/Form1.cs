@@ -77,7 +77,7 @@ namespace WindowsFormsApplication1
 
         private void placeInitialConfigToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            game.board.initConfig();
+
         }
 
     }
