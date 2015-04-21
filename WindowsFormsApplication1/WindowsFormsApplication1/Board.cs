@@ -78,14 +78,13 @@ namespace WindowsFormsApplication1
             int probR = -1, probC = -1;
             try
             {
-                probC = p.Width / pt.X;
-                probR = p.Height / pt.Y;
-                Space prob = board[probR-1, probC-1];
+                probC = pt.X / width;
+                probR = pt.Y/height;
+                Space prob = board[probR, probC];
                 if (pt.X > prob.getX() && pt.X < prob.getX() + width && pt.Y > prob.getY() && pt.Y < prob.getY() + height)
                 {
                     return prob;
                 }
-                MessageBox.Show("Did you want space "+(probR-1)+","+(probC-1));
             }
             catch (IndexOutOfRangeException ioore)
             {

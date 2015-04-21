@@ -160,7 +160,7 @@ namespace WindowsFormsApplication1
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-            
+            MessageBox.Show("Point clicked is " + e.Location);
             board.tryToPlace(e.Location, blackTurn);
         }
 
