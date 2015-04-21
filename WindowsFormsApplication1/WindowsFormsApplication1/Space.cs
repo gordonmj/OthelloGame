@@ -15,6 +15,8 @@ namespace WindowsFormsApplication1
         private int height;
         private int x;
         private int y;
+        private int status = 0;
+        private int[] stati = {-2,-1,0,1,2}; //0=empty, 1=black placed, -1=white placed, 2=black tentative, -2=white tentative
         private SolidBrush blackBrush = new SolidBrush(Color.Black);
         private SolidBrush whiteBrush = new SolidBrush(Color.White);
 
@@ -28,15 +30,25 @@ namespace WindowsFormsApplication1
             y = height * r;
         }
 
+        public int getX()
+        {
+            return x;
+        }
+        public int getY()
+        {
+            return y;
+        }
+        
         public void drawDisc(System.Drawing.Graphics pG, bool black){
             if (black)
             {
+                status = 1;
                 pG.FillEllipse(blackBrush, x, y, width, height);
             }
             else
             {
+                status = -1;
                 pG.FillEllipse(whiteBrush, x, y, width, height);
-
             }
         }
     }

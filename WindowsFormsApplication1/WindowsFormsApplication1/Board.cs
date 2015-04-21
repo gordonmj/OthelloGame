@@ -72,5 +72,35 @@ namespace WindowsFormsApplication1
         {
             board[r, c].drawDisc(pG, false);
         }
+
+        public Space whichSpace(Point pt)
+        {
+            int probR = -1, probC = -1;
+            try
+            {
+                probC = p.Width / pt.X;
+                probR = p.Height / pt.Y;
+                Space prob = board[probR-1, probC-1];
+                if (pt.X > prob.getX() && pt.X < prob.getX() + width && pt.Y > prob.getY() && pt.Y < prob.getY() + height)
+                {
+                    return prob;
+                }
+                MessageBox.Show("Did you want space "+(probR-1)+","+(probC-1));
+            }
+            catch (IndexOutOfRangeException ioore)
+            {
+                MessageBox.Show("Index out of range. probR is " + probR + " and probC is " + probC);
+            }
+            return null;
+        }
+
+        public void tryToPlace(Point pt, bool isBlack)
+        {
+            if (whichSpace(pt) != null)
+            {
+                Space toPlace = whichSpace(pt);
+                toPlace.drawDisc(pG, isBlack);
+            }
+        }
     }//class
 }//namespace

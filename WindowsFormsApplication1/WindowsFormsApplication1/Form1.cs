@@ -29,6 +29,8 @@ namespace WindowsFormsApplication1
         Player rightPlayer;
         Player blackPlayer;
         Player whitePlayer;
+        bool noMoreMoves = false;
+        private bool blackTurn = true;
 
         public Form1()
         {
@@ -43,7 +45,11 @@ namespace WindowsFormsApplication1
             rightStack = game.getStack();
             leftPlayer = game.getPlayer();
             rightPlayer = game.getPlayer();
-
+            if (noMoreMoves)
+            {
+                //endgame
+            }
+            
         }
 
         //private void panel5_Paint(object sender, PaintEventArgs e)
@@ -98,7 +104,7 @@ namespace WindowsFormsApplication1
 
         private void chooseColors()
         {
-                        MessageBox.Show("Choosing colors");
+            MessageBox.Show("Choosing colors randomly");
             blackPlayer = game.assignColor(leftPlayer, rightPlayer);
             if (ReferenceEquals(blackPlayer, leftPlayer))
             {
@@ -123,6 +129,12 @@ namespace WindowsFormsApplication1
         private void chooseColorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chooseColors();
+        }
+
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+            board.tryToPlace(e.Location, blackTurn);
         }
     }
 }
