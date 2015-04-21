@@ -52,6 +52,12 @@ namespace WindowsFormsApplication1
                 p2.setColor(Color.Black);
                 return p2;
             }
+        }//method
+
+        public bool takeTurn(bool blackTurn)
+        {
+
+            return !blackTurn;
         }
     }
 }

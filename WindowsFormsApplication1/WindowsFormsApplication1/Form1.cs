@@ -30,6 +30,7 @@ namespace WindowsFormsApplication1
         Player blackPlayer;
         Player whitePlayer;
         bool noMoreMoves = false;
+        bool gameStarted = false;
         private bool blackTurn = true;
 
         public Form1()
@@ -49,7 +50,26 @@ namespace WindowsFormsApplication1
             {
                 //endgame
             }
-            
+
+            //blackTurn = game.takeTurn(blackTurn);
+        }
+
+        private void setTurn()
+        {
+            if (gameStarted)
+            {
+                if (blackTurn)
+                {
+                    WhoseTurn.Text = "Black's turn";
+                    WhoseTurn.ForeColor = Color.Black;
+                }
+                else
+                {
+                    WhoseTurn.Text = "White's turn";
+                    WhoseTurn.ForeColor = Color.White;
+                }
+            }
+
         }
 
         //private void panel5_Paint(object sender, PaintEventArgs e)
@@ -128,13 +148,25 @@ namespace WindowsFormsApplication1
         }
         private void chooseColorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (gameStarted)
+            {
+                MessageBox.Show("Already chosen.");
+                return;
+            }
             chooseColors();
+            gameStarted = true;
+            setTurn();
         }
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
             
             board.tryToPlace(e.Location, blackTurn);
+        }
+
+        private void WhoseTurn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

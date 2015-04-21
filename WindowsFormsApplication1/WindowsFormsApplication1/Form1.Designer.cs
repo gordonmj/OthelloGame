@@ -129,20 +129,20 @@
             // RightDiscsLeft
             // 
             this.RightDiscsLeft.AutoSize = true;
-            this.RightDiscsLeft.Location = new System.Drawing.Point(565, 38);
+            this.RightDiscsLeft.Location = new System.Drawing.Point(551, 38);
             this.RightDiscsLeft.Name = "RightDiscsLeft";
-            this.RightDiscsLeft.Size = new System.Drawing.Size(148, 29);
+            this.RightDiscsLeft.Size = new System.Drawing.Size(162, 29);
             this.RightDiscsLeft.TabIndex = 4;
-            this.RightDiscsLeft.Text = "Discs left: 0";
+            this.RightDiscsLeft.Text = "Discs left: 32";
             // 
             // LeftDiscsLeft
             // 
             this.LeftDiscsLeft.AutoSize = true;
             this.LeftDiscsLeft.Location = new System.Drawing.Point(4, 42);
             this.LeftDiscsLeft.Name = "LeftDiscsLeft";
-            this.LeftDiscsLeft.Size = new System.Drawing.Size(148, 29);
+            this.LeftDiscsLeft.Size = new System.Drawing.Size(162, 29);
             this.LeftDiscsLeft.TabIndex = 3;
-            this.LeftDiscsLeft.Text = "Discs left: 0";
+            this.LeftDiscsLeft.Text = "Discs left: 32";
             // 
             // WhoseTurn
             // 
@@ -155,6 +155,7 @@
             this.WhoseTurn.TabIndex = 2;
             this.WhoseTurn.Text = "Not Started";
             this.WhoseTurn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.WhoseTurn.Click += new System.EventHandler(this.WhoseTurn_Click);
             // 
             // rightPlayerScore
             // 
@@ -175,9 +176,9 @@
             this.leftPlayerScore.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.leftPlayerScore.Location = new System.Drawing.Point(3, 7);
             this.leftPlayerScore.Name = "leftPlayerScore";
-            this.leftPlayerScore.Size = new System.Drawing.Size(107, 31);
+            this.leftPlayerScore.Size = new System.Drawing.Size(123, 31);
             this.leftPlayerScore.TabIndex = 0;
-            this.leftPlayerScore.Text = "Score: ";
+            this.leftPlayerScore.Text = "Score: 0";
             this.leftPlayerScore.Click += new System.EventHandler(this.leftPlayerInfo_Click);
             // 
             // panel3
