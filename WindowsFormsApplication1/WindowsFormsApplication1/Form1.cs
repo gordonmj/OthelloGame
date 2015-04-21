@@ -103,14 +103,18 @@ namespace WindowsFormsApplication1
             if (ReferenceEquals(blackPlayer, leftPlayer))
             {
                 whitePlayer = rightPlayer;
-                leftPlayerInfo.ForeColor = Color.Black;
-                rightPlayerInfo.ForeColor = Color.White;
+                leftPlayerScore.ForeColor = Color.Black;
+                LeftDiscsLeft.ForeColor = Color.Black;
+                rightPlayerScore.ForeColor = Color.White;
+                RightDiscsLeft.ForeColor = Color.White;
                 MessageBox.Show("Left is black and right is white.");
             }
             else
             {
-                leftPlayerInfo.ForeColor = Color.White;
-                rightPlayerInfo.ForeColor = Color.Black;
+                leftPlayerScore.ForeColor = Color.White;
+                LeftDiscsLeft.ForeColor = Color.White;
+                rightPlayerScore.ForeColor = Color.Black;
+                RightDiscsLeft.ForeColor = Color.Black;
                 whitePlayer = leftPlayer;
                 MessageBox.Show("Right is black and left is white.");
             }

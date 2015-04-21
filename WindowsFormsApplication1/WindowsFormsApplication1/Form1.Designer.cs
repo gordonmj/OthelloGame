@@ -36,11 +36,11 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.leftScore = new System.Windows.Forms.Panel();
-            this.ScoreRight = new System.Windows.Forms.Label();
-            this.ScoreLeft = new System.Windows.Forms.Label();
+            this.RightDiscsLeft = new System.Windows.Forms.Label();
+            this.LeftDiscsLeft = new System.Windows.Forms.Label();
             this.WhoseTurn = new System.Windows.Forms.Label();
-            this.rightPlayerInfo = new System.Windows.Forms.Label();
-            this.leftPlayerInfo = new System.Windows.Forms.Label();
+            this.rightPlayerScore = new System.Windows.Forms.Label();
+            this.leftPlayerScore = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.menuStrip2.SuspendLayout();
             this.leftScore.SuspendLayout();
@@ -112,11 +112,11 @@
             // 
             this.leftScore.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.leftScore.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.leftScore.Controls.Add(this.ScoreRight);
-            this.leftScore.Controls.Add(this.ScoreLeft);
+            this.leftScore.Controls.Add(this.RightDiscsLeft);
+            this.leftScore.Controls.Add(this.LeftDiscsLeft);
             this.leftScore.Controls.Add(this.WhoseTurn);
-            this.leftScore.Controls.Add(this.rightPlayerInfo);
-            this.leftScore.Controls.Add(this.leftPlayerInfo);
+            this.leftScore.Controls.Add(this.rightPlayerScore);
+            this.leftScore.Controls.Add(this.leftPlayerScore);
             this.leftScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leftScore.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.leftScore.Location = new System.Drawing.Point(173, 532);
@@ -125,23 +125,23 @@
             this.leftScore.TabIndex = 4;
             this.leftScore.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
-            // ScoreRight
+            // RightDiscsLeft
             // 
-            this.ScoreRight.AutoSize = true;
-            this.ScoreRight.Location = new System.Drawing.Point(604, 38);
-            this.ScoreRight.Name = "ScoreRight";
-            this.ScoreRight.Size = new System.Drawing.Size(110, 29);
-            this.ScoreRight.TabIndex = 4;
-            this.ScoreRight.Text = "Score: 0";
+            this.RightDiscsLeft.AutoSize = true;
+            this.RightDiscsLeft.Location = new System.Drawing.Point(565, 38);
+            this.RightDiscsLeft.Name = "RightDiscsLeft";
+            this.RightDiscsLeft.Size = new System.Drawing.Size(148, 29);
+            this.RightDiscsLeft.TabIndex = 4;
+            this.RightDiscsLeft.Text = "Discs left: 0";
             // 
-            // ScoreLeft
+            // LeftDiscsLeft
             // 
-            this.ScoreLeft.AutoSize = true;
-            this.ScoreLeft.Location = new System.Drawing.Point(4, 42);
-            this.ScoreLeft.Name = "ScoreLeft";
-            this.ScoreLeft.Size = new System.Drawing.Size(110, 29);
-            this.ScoreLeft.TabIndex = 3;
-            this.ScoreLeft.Text = "Score: 0";
+            this.LeftDiscsLeft.AutoSize = true;
+            this.LeftDiscsLeft.Location = new System.Drawing.Point(4, 42);
+            this.LeftDiscsLeft.Name = "LeftDiscsLeft";
+            this.LeftDiscsLeft.Size = new System.Drawing.Size(148, 29);
+            this.LeftDiscsLeft.TabIndex = 3;
+            this.LeftDiscsLeft.Text = "Discs left: 0";
             // 
             // WhoseTurn
             // 
@@ -155,29 +155,29 @@
             this.WhoseTurn.Text = "Not Started";
             this.WhoseTurn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // rightPlayerInfo
+            // rightPlayerScore
             // 
-            this.rightPlayerInfo.AutoSize = true;
-            this.rightPlayerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightPlayerInfo.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.rightPlayerInfo.Location = new System.Drawing.Point(542, 7);
-            this.rightPlayerInfo.Name = "rightPlayerInfo";
-            this.rightPlayerInfo.Size = new System.Drawing.Size(174, 31);
-            this.rightPlayerInfo.TabIndex = 1;
-            this.rightPlayerInfo.Text = "Right Player";
-            this.rightPlayerInfo.Click += new System.EventHandler(this.rightPlayerInfo_Click);
+            this.rightPlayerScore.AutoSize = true;
+            this.rightPlayerScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightPlayerScore.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.rightPlayerScore.Location = new System.Drawing.Point(590, 7);
+            this.rightPlayerScore.Name = "rightPlayerScore";
+            this.rightPlayerScore.Size = new System.Drawing.Size(123, 31);
+            this.rightPlayerScore.TabIndex = 1;
+            this.rightPlayerScore.Text = "Score: 0";
+            this.rightPlayerScore.Click += new System.EventHandler(this.rightPlayerInfo_Click);
             // 
-            // leftPlayerInfo
+            // leftPlayerScore
             // 
-            this.leftPlayerInfo.AutoSize = true;
-            this.leftPlayerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.leftPlayerInfo.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.leftPlayerInfo.Location = new System.Drawing.Point(3, 7);
-            this.leftPlayerInfo.Name = "leftPlayerInfo";
-            this.leftPlayerInfo.Size = new System.Drawing.Size(155, 31);
-            this.leftPlayerInfo.TabIndex = 0;
-            this.leftPlayerInfo.Text = "Left Player";
-            this.leftPlayerInfo.Click += new System.EventHandler(this.leftPlayerInfo_Click);
+            this.leftPlayerScore.AutoSize = true;
+            this.leftPlayerScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leftPlayerScore.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.leftPlayerScore.Location = new System.Drawing.Point(3, 7);
+            this.leftPlayerScore.Name = "leftPlayerScore";
+            this.leftPlayerScore.Size = new System.Drawing.Size(107, 31);
+            this.leftPlayerScore.TabIndex = 0;
+            this.leftPlayerScore.Text = "Score: ";
+            this.leftPlayerScore.Click += new System.EventHandler(this.leftPlayerInfo_Click);
             // 
             // panel3
             // 
@@ -222,12 +222,12 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem placeInitialConfigToolStripMenuItem;
-        private System.Windows.Forms.Label leftPlayerInfo;
-        private System.Windows.Forms.Label rightPlayerInfo;
+        private System.Windows.Forms.Label leftPlayerScore;
+        private System.Windows.Forms.Label rightPlayerScore;
         private System.Windows.Forms.ToolStripMenuItem chooseColorsToolStripMenuItem;
-        private System.Windows.Forms.Label ScoreLeft;
+        private System.Windows.Forms.Label LeftDiscsLeft;
         private System.Windows.Forms.Label WhoseTurn;
-        private System.Windows.Forms.Label ScoreRight;
+        private System.Windows.Forms.Label RightDiscsLeft;
     }
 }
 
