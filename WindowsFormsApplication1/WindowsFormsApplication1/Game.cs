@@ -148,6 +148,8 @@ namespace WindowsFormsApplication1
             {
                 //MessageBox.Show("Number to flip: " + toFlip.Count());
                 toFlip.ForEach(highlight);
+                toFlip.ForEach(confirm);
+                /*
                 DialogResult answer = MessageBox.Show("Confirm that move?", "Confirm?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (answer == DialogResult.Yes)
                 {
@@ -166,6 +168,7 @@ namespace WindowsFormsApplication1
                     toFlip.Clear();
                     return -1;
                 }
+                 */
                 return 0;
             }
             //reset List, highlight etc.
