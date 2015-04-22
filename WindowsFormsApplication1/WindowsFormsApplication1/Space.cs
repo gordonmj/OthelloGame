@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
@@ -38,7 +39,27 @@ namespace WindowsFormsApplication1
         {
             return y;
         }
-        
+
+        public void placeDisc(System.Drawing.Graphics pG, bool black)
+        {
+            if (status != 0)
+            {
+                MessageBox.Show("That spot is taken!");
+                return;
+            }
+            drawDisc(pG, black);
+        }
+
+        public void flipDisc(System.Drawing.Graphics pG, bool black)
+        {
+            if (!(black && status==-1) || !(!black && status ==1))
+            {
+                MessageBox.Show("Can only flip opposite color!");
+                return;
+            }
+            drawDisc(pG, black);
+        }
+
         public void drawDisc(System.Drawing.Graphics pG, bool black){
             if (black)
             {

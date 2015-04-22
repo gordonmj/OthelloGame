@@ -23,12 +23,12 @@ namespace WindowsFormsApplication1
         private System.Drawing.Graphics pG6;
         //private System.Drawing.Graphics pG7;
         Board board;
-        DiscStack leftStack;
-        DiscStack rightStack;
         Player leftPlayer;
         Player rightPlayer;
         Player blackPlayer;
         Player whitePlayer;
+        DiscStack leftStack;
+        DiscStack rightStack;
         bool noMoreMoves = false;
         bool gameStarted = false;
         private bool blackTurn = true;
@@ -82,6 +82,7 @@ namespace WindowsFormsApplication1
             pG1 = panel1.CreateGraphics();
             game.board.setUpBoard(panel1,pG1);
             game.board.layoutBoard();
+            game.board.initConfig();
         }
 
         private void panel6_Paint(object sender, PaintEventArgs e)
@@ -134,6 +135,8 @@ namespace WindowsFormsApplication1
                 rightPlayerScore.ForeColor = Color.White;
                 RightDiscsLeft.ForeColor = Color.White;
                 MessageBox.Show("Left is black and right is white.");
+                game.blackStack = leftStack;
+                game.whiteStack = rightStack;
             }
             else
             {
@@ -143,7 +146,10 @@ namespace WindowsFormsApplication1
                 RightDiscsLeft.ForeColor = Color.Black;
                 whitePlayer = leftPlayer;
                 MessageBox.Show("Right is black and left is white.");
+                game.blackStack = rightStack;
+                game.whiteStack = leftStack;
             }
+            game.setPlayer(blackPlayer, whitePlayer);
         }
 
         private void chooseColorsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -160,7 +166,9 @@ namespace WindowsFormsApplication1
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-            board.tryToPlace(e.Location, blackTurn);
+            game.tryToPlace(e.Location, blackTurn);
+            blackTurn = !blackTurn; //will have to move
+            setTurn();
         }
 
         private void WhoseTurn_Click(object sender, EventArgs e)
@@ -172,6 +180,11 @@ namespace WindowsFormsApplication1
         {
             blackTurn = !blackTurn;
             setTurn();
+        }
+
+        private void justFlipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

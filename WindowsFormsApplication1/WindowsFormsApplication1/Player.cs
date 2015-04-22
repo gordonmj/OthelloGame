@@ -11,6 +11,9 @@ namespace WindowsFormsApplication1
     {
 
         private Color color;
+        public int score = 0;
+        public int discsLeft = 32;
+        public int gamesWon = 0;
 
         public Player()
         {
@@ -20,6 +23,41 @@ namespace WindowsFormsApplication1
         public void setColor(Color c)
         {
             color = c;
+        }
+
+        public Color getColor()
+        {
+            return color;
+        }
+
+        public int getScore()
+        {
+            return score;
+        }
+
+        public void setScore(int s)
+        {
+            score = s;
+        }
+
+        public void raiseScore(int amt)
+        {
+            score += amt;
+        }
+
+        public void lowerScore(int amt)
+        {
+            score -= amt;
+        }
+
+        public void decCount()
+        {
+            discsLeft--;
+        }
+
+        public void resetCount()
+        {
+            discsLeft = 32;
         }
 
 

@@ -98,7 +98,7 @@ namespace WindowsFormsApplication1
             if (whichSpace(pt) != null)
             {
                 Space toPlace = whichSpace(pt);
-                toPlace.drawDisc(pG, isBlack);
+                toPlace.placeDisc(pG, isBlack);
             }
         }
     }//class

@@ -10,14 +10,14 @@ namespace WindowsFormsApplication1
 {
     class DiscStack
     {
-        private System.Drawing.Graphics pG;
-        private Panel p;
+        public System.Drawing.Graphics pG;
+        public Panel p;
         private SolidBrush blackBrush = new SolidBrush(Color.Black);
         private SolidBrush whiteBrush = new SolidBrush(Color.White);
 
         public DiscStack()
         {
-
+            
         }
 
         public void setUpStack(System.Drawing.Graphics panelGraphics, Panel panel)

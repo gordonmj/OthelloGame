@@ -11,8 +11,11 @@ namespace WindowsFormsApplication1
     class Game
     {
         public Board board;
-        //public Player left;
-        //public Player right;
+        public Player black= new Player();
+        public Player white = new Player();
+        public DiscStack whiteStack = new DiscStack();
+        public DiscStack blackStack = new DiscStack();
+
 
         public Game()
         {
@@ -34,6 +37,12 @@ namespace WindowsFormsApplication1
         public Player getPlayer()
         {
             return new Player();
+        }
+
+        public void setPlayer(Player blackPlayer, Player whitePlayer)
+        {
+            black = blackPlayer;
+            white = whitePlayer;
         }
 
         public Player assignColor(Player p1, Player p2)
@@ -59,5 +68,23 @@ namespace WindowsFormsApplication1
 
             return !blackTurn;
         }
+
+        public void tryToPlace(Point pt, bool isBlack)
+        {
+            board.tryToPlace(pt, isBlack);
+            if (isBlack)
+            {
+                black.decCount();
+                blackStack.drawStack(black.discsLeft);
+
+            }
+            else
+            {
+                white.decCount();
+                whiteStack.drawStack(white.discsLeft);
+            }
+        }
+
+         
     }
 }
