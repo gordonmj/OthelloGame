@@ -10,18 +10,19 @@ namespace WindowsFormsApplication1
 {
     class Space
     {
-        private int row;
-        private int col;
-        private int width;
-        private int height;
-        private int x;
-        private int y;
-        private int status = 0;
-        private int[] stati = { -2, -1, 0, 1, 2 }; //0=empty, 1=black placed, -1=white placed, 2=black tentative, -2=white tentative
+        public int row;
+        public int col;
+        public int width;
+        public int height;
+        public int x;
+        public int y;
+        public int status = 0;
+        public int[] stati = { -2, -1, 0, 1, 2 }; //0=empty, 1=black placed, -1=white placed, 2=black tentative, -2=white tentative
         private SolidBrush blackBrush = new SolidBrush(Color.Black);
         private SolidBrush whiteBrush = new SolidBrush(Color.White);
+        public System.Drawing.Graphics pG;
 
-        public Space(int r, int c, int w, int h)
+        public Space(int r, int c, int w, int h, System.Drawing.Graphics panelG)
         {
             row = r;
             col = c;
@@ -29,6 +30,7 @@ namespace WindowsFormsApplication1
             height = h;
             x = width * c;
             y = height * r;
+            pG = panelG;
         }
 
         public int getX()
@@ -40,27 +42,27 @@ namespace WindowsFormsApplication1
             return y;
         }
 
-        public void placeDisc(System.Drawing.Graphics pG, bool black)
+        public void placeDisc(bool black)
         {
             if (status != 0)
             {
                 MessageBox.Show("That spot is taken!");
                 return;
             }
-            drawDisc(pG, black);
+            drawDisc(black);
         }
 
-        public void flipDisc(System.Drawing.Graphics pG, bool black)
+        public void flipDisc(bool black)
         {
             if (!(black && status == -1) || !(!black && status == 1))
             {
                 MessageBox.Show("Can only flip opposite color!");
                 return;
             }
-            drawDisc(pG, black);
+            drawDisc(black);
         }
 
-        public void drawDisc(System.Drawing.Graphics pG, bool black)
+        public void drawDisc(bool black)
         {
             if (black)
             {
@@ -71,6 +73,22 @@ namespace WindowsFormsApplication1
             {
                 status = -1;
                 pG.FillEllipse(whiteBrush, x, y, width, height);
+            }
+        }
+
+        public void highLight()
+        {
+            if (status==-1)
+            {
+                status = 2;
+                pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
+                drawDisc(true);
+            }
+            else if (status == 1)
+            {
+                status = -2;
+                pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
+                drawDisc(false);
             }
         }
 

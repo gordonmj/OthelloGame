@@ -15,7 +15,8 @@ namespace WindowsFormsApplication1
         public Player white = new Player();
         public DiscStack whiteStack;
         public DiscStack blackStack;
-
+        public int[,] directions = {{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1},{-1,0}};
+        public List<Space> toFlip = new List<Space>();
 
         public Game()
         {
@@ -71,7 +72,8 @@ namespace WindowsFormsApplication1
 
         public void tryToPlace(Point pt, bool isBlack)
         {
-            board.tryToPlace(pt, isBlack);
+            Space toPlace = board.tryToPlace(pt, isBlack);
+            findFlips(toPlace);
             if (isBlack)
             {
                 black.decCount();
@@ -93,6 +95,50 @@ namespace WindowsFormsApplication1
 
         }
 
+        public Space next(Space sp, int d)
+        {
+            int newC = sp.col + directions[d,1];
+            int newR = sp.row + directions[d,0];
+            if (newC < 0 || newC > 7 || newR < 0 || newR > 7) return null;
+            else return board.board[newR, newC];
+        }
 
+        public void findFlips(Space sp)
+        {
+            for (int d = 0; d < 8; d++)
+            {
+                Space m = next(sp, d);
+                //if (m == null)
+                //{
+                //    MessageBox.Show("NULL!");
+                //    return;
+                //}
+                MessageBox.Show(m.row+","+m.col+","+m.status);
+                while (m != null && m.status != 0 && m.status != sp.status)
+                {
+                    MessageBox.Show("looking at " + m.getX() + ", " + m.getY());
+                    toFlip.Add(m);
+                    m = next(m, d);
+                }
+            }//for each direction
+            if (toFlip.Count() <= 0)
+            {
+                MessageBox.Show("Illegal move! Try again!");
+                return;
+                //bad move!
+            }
+            else
+            {
+                MessageBox.Show("Number to flip: " + toFlip.Count());
+                toFlip.ForEach(highlight);
+            }
+            //reset List, highlight etc.
+
+        }
+
+        public void highlight(Space s)
+        {
+            s.highLight();
+        }
     }
 }

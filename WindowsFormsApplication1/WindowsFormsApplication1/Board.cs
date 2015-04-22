@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
         private SolidBrush blackBrush = new SolidBrush(Color.Black);
         private int width;
         private int height;
-        private Space[,] board = new Space[8, 8];
+        public Space[,] board = new Space[8, 8];
         private System.Drawing.Graphics pG;
         private Panel p;
         private Space lastMove;
@@ -34,7 +34,7 @@ namespace WindowsFormsApplication1
             {
                 for (int c = 0; c < 8; c++)
                 {
-                    board[r, c] = new Space(r, c, width, height);
+                    board[r, c] = new Space(r, c, width, height,pG);
                 }
             }
 
@@ -68,12 +68,12 @@ namespace WindowsFormsApplication1
 
         public void placeBlack(int r, int c)
         {
-            board[r, c].drawDisc(pG, true);
+            board[r, c].drawDisc(true);
         }
 
         public void placeWhite(int r, int c)
         {
-            board[r, c].drawDisc(pG, false);
+            board[r, c].drawDisc(false);
         }
 
         public Space whichSpace(Point pt)
@@ -96,13 +96,18 @@ namespace WindowsFormsApplication1
             return null;
         }
 
-        public void tryToPlace(Point pt, bool isBlack)
+        public Space tryToPlace(Point pt, bool isBlack)
         {
             if (whichSpace(pt) != null)
             {
                 Space toPlace = whichSpace(pt);
-                toPlace.placeDisc(pG, isBlack);
+                toPlace.placeDisc(isBlack);
                 lastMove = toPlace;
+                return toPlace;
+            }
+            else
+            {
+                return null;
             }
         }
 
