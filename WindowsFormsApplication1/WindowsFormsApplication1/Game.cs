@@ -85,6 +85,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public void undo()
+        {
+            //
+        }
+
          
     }
 }

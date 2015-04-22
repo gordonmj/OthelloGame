@@ -186,5 +186,10 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void undoLastMoveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            game.undo();
+        }
     }
 }
