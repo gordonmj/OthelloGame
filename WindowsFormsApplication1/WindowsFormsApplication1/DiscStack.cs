@@ -15,9 +15,9 @@ namespace WindowsFormsApplication1
         private SolidBrush blackBrush = new SolidBrush(Color.Black);
         private SolidBrush whiteBrush = new SolidBrush(Color.White);
 
-        public DiscStack()
+        public DiscStack(Panel panel)
         {
-            
+            p = panel;
         }
 
         public void setUpStack(System.Drawing.Graphics panelGraphics, Panel panel)
@@ -28,6 +28,7 @@ namespace WindowsFormsApplication1
 
         public void drawStack(int discsLeft)
         {
+            pG.Clear(Color.DarkGray);
             int stackWidth = (p.Width - 10);
             int stackHeight = (p.Height - 5) / 64;
             for (int i = 0; i < discsLeft * 2; i++)

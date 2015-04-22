@@ -36,14 +36,12 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Normal;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Bounds = Screen.PrimaryScreen.Bounds;
+            //this.WindowState = FormWindowState.Normal;
+            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            //this.Bounds = Screen.PrimaryScreen.Bounds;
 
             game = new Game();
             board = game.getBoard();
-            leftStack = game.getStack();
-            rightStack = game.getStack();
             leftPlayer = game.getPlayer();
             rightPlayer = game.getPlayer();
             if (noMoreMoves)
@@ -80,19 +78,20 @@ namespace WindowsFormsApplication1
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             pG1 = panel1.CreateGraphics();
-            game.board.setUpBoard(panel1,pG1);
+            game.board.setUpBoard(panel1, pG1);
             game.board.layoutBoard();
             game.board.initConfig();
         }
 
         private void panel6_Paint(object sender, PaintEventArgs e)
         {
-
+            pG6 = panel6.CreateGraphics();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
             pG2 = panel2.CreateGraphics();
+            leftStack = new DiscStack(panel2);
             leftStack.setUpStack(pG2, panel2);
             leftStack.drawStack(32);
         }
@@ -100,6 +99,7 @@ namespace WindowsFormsApplication1
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
             pG3 = panel3.CreateGraphics();
+            rightStack = new DiscStack(panel3);
             rightStack.setUpStack(pG3, panel3);
             rightStack.drawStack(32);
         }
@@ -167,8 +167,28 @@ namespace WindowsFormsApplication1
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
             game.tryToPlace(e.Location, blackTurn);
+            updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
             blackTurn = !blackTurn; //will have to move
             setTurn();
+        }
+
+        private void updateScoreboard(int newBlack, int newWhite)
+        {
+            if (whitePlayer == leftPlayer)
+            {
+                leftPlayerScore.Text = "Score: " + newWhite;
+                LeftDiscsLeft.Text = "Discs left: " + whitePlayer.discsLeft;
+                rightPlayerScore.Text = "Score: " + newBlack;
+                RightDiscsLeft.Text = "Discs left: " + blackPlayer.discsLeft;
+            }
+            else
+            {
+                leftPlayerScore.Text = "Score: " + newBlack;
+                LeftDiscsLeft.Text = "Discs left: " + blackPlayer.discsLeft;
+                rightPlayerScore.Text = "Score: " + newWhite;
+                RightDiscsLeft.Text = "Discs left: " + whitePlayer.discsLeft;
+            }
+
         }
 
         private void WhoseTurn_Click(object sender, EventArgs e)

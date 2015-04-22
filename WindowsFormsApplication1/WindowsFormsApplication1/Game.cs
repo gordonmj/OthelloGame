@@ -11,10 +11,10 @@ namespace WindowsFormsApplication1
     class Game
     {
         public Board board;
-        public Player black= new Player();
+        public Player black = new Player();
         public Player white = new Player();
-        public DiscStack whiteStack = new DiscStack();
-        public DiscStack blackStack = new DiscStack();
+        public DiscStack whiteStack;
+        public DiscStack blackStack;
 
 
         public Game()
@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
 
         public DiscStack getStack()
         {
-            return new DiscStack();
+            return whiteStack;
         }
 
         public Player getPlayer()
@@ -76,20 +76,23 @@ namespace WindowsFormsApplication1
             {
                 black.decCount();
                 blackStack.drawStack(black.discsLeft);
+                black.raiseScore(1);
 
             }
             else
             {
                 white.decCount();
                 whiteStack.drawStack(white.discsLeft);
+                white.raiseScore(1);
             }
         }
 
         public void undo()
         {
-            //
+            board.undoMove();
+
         }
 
-         
+
     }
 }

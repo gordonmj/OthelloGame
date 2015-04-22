@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1
         private Space[,] board = new Space[8, 8];
         private System.Drawing.Graphics pG;
         private Panel p;
+        private Space lastMove;
+
         public Board()
         {
             //make squares
@@ -35,10 +37,11 @@ namespace WindowsFormsApplication1
                     board[r, c] = new Space(r, c, width, height);
                 }
             }
- 
+
         }
-        public void layoutBoard(){
-                        //print squares
+        public void layoutBoard()
+        {
+            //print squares
             //System.Drawing.Graphics pG = p.CreateGraphics();
             Pen border = new Pen(blackBrush, 10);
             for (int r = 0; r < 8; r++)
@@ -47,7 +50,7 @@ namespace WindowsFormsApplication1
                 {
                     //dots go at 2,2 6,2 2,6 6,6
                     pG.DrawRectangle(new Pen(blackBrush), width * c, height * r, width, height);
-                    if ((r==2 || r==6) && (c==2 || c==6))
+                    if ((r == 2 || r == 6) && (c == 2 || c == 6))
                     {
                         pG.FillEllipse(blackBrush, (width * c) - 4, (height * r) - 4, 10, 10);
                     }//if
@@ -79,7 +82,7 @@ namespace WindowsFormsApplication1
             try
             {
                 probC = pt.X / width;
-                probR = pt.Y/height;
+                probR = pt.Y / height;
                 Space prob = board[probR, probC];
                 if (pt.X > prob.getX() && pt.X < prob.getX() + width && pt.Y > prob.getY() && pt.Y < prob.getY() + height)
                 {
@@ -99,7 +102,13 @@ namespace WindowsFormsApplication1
             {
                 Space toPlace = whichSpace(pt);
                 toPlace.placeDisc(pG, isBlack);
+                lastMove = toPlace;
             }
+        }
+
+        public void undoMove()
+        {
+            lastMove.eraseDisc(pG);
         }
     }//class
 }//namespace

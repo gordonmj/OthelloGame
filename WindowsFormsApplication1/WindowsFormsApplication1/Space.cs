@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
         private int x;
         private int y;
         private int status = 0;
-        private int[] stati = {-2,-1,0,1,2}; //0=empty, 1=black placed, -1=white placed, 2=black tentative, -2=white tentative
+        private int[] stati = { -2, -1, 0, 1, 2 }; //0=empty, 1=black placed, -1=white placed, 2=black tentative, -2=white tentative
         private SolidBrush blackBrush = new SolidBrush(Color.Black);
         private SolidBrush whiteBrush = new SolidBrush(Color.White);
 
@@ -52,7 +52,7 @@ namespace WindowsFormsApplication1
 
         public void flipDisc(System.Drawing.Graphics pG, bool black)
         {
-            if (!(black && status==-1) || !(!black && status ==1))
+            if (!(black && status == -1) || !(!black && status == 1))
             {
                 MessageBox.Show("Can only flip opposite color!");
                 return;
@@ -60,7 +60,8 @@ namespace WindowsFormsApplication1
             drawDisc(pG, black);
         }
 
-        public void drawDisc(System.Drawing.Graphics pG, bool black){
+        public void drawDisc(System.Drawing.Graphics pG, bool black)
+        {
             if (black)
             {
                 status = 1;
@@ -71,6 +72,12 @@ namespace WindowsFormsApplication1
                 status = -1;
                 pG.FillEllipse(whiteBrush, x, y, width, height);
             }
+        }
+
+        public void eraseDisc(System.Drawing.Graphics pG)
+        {
+            pG.FillEllipse(new SolidBrush(Color.Green), x, y, width, height);
+            status = 0;
         }
     }
 }
