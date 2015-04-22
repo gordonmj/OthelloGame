@@ -42,21 +42,23 @@ namespace WindowsFormsApplication1
             return y;
         }
 
-        public void placeDisc(bool black)
+        public int placeDisc(bool black)
         {
             if (status != 0)
             {
                 MessageBox.Show("That spot is taken!");
-                return;
+                return 0;
             }
             drawDisc(black);
             if (black)
             {
                 status = 1;
+                return 1;
             }
             else
             {
                 status = -1;
+                return -1;
             }
         }
 

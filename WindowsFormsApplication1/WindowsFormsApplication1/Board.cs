@@ -101,7 +101,10 @@ namespace WindowsFormsApplication1
             if (whichSpace(pt) != null)
             {
                 Space toPlace = whichSpace(pt);
-                toPlace.placeDisc(isBlack);
+                if (toPlace.placeDisc(isBlack) == 0)
+                {
+                    return null;
+                }
                 lastMove = toPlace;
                 return toPlace;
             }

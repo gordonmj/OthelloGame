@@ -165,7 +165,11 @@ namespace WindowsFormsApplication1
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-            game.tryToPlace(e.Location, blackTurn);
+            int status = game.tryToPlace(e.Location, blackTurn);
+            if (status == -1)
+            {
+                return;
+            }
             updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
             blackTurn = !blackTurn; //will have to move
             setTurn();

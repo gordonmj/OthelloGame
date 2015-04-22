@@ -70,19 +70,23 @@ namespace WindowsFormsApplication1
             return !blackTurn;
         }
 
-        public void tryToPlace(Point pt, bool isBlack)
+        public int tryToPlace(Point pt, bool isBlack)
         {
             Space toPlace = board.tryToPlace(pt, isBlack);
+            if (toPlace == null)
+            {
+                return -1;
+            }
             int score = findFlips(toPlace);
             if (score == -1)
             {
-                return;
+                return -1;
             }
             if (isBlack)
             {
                 black.decCount();
                 blackStack.drawStack(black.discsLeft);
-                black.raiseScore(score);
+                black.raiseScore(score+1);
                 white.lowerScore(score);
 
             }
@@ -90,9 +94,10 @@ namespace WindowsFormsApplication1
             {
                 white.decCount();
                 whiteStack.drawStack(white.discsLeft);
-                white.raiseScore(score);
+                white.raiseScore(score+1);
                 black.lowerScore(score);
             }
+            return score;
         }
 
         public void undo()
@@ -162,7 +167,7 @@ namespace WindowsFormsApplication1
                 {
                     toFlip.ForEach(unhighlight);
                     //return score
-                    undo();
+                    sp.eraseDisc();
                     toFlip.Clear();
                     return -1;
                 }
