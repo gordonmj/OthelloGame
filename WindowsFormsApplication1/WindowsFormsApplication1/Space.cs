@@ -50,6 +50,14 @@ namespace WindowsFormsApplication1
                 return;
             }
             drawDisc(black);
+            if (black)
+            {
+                status = 1;
+            }
+            else
+            {
+                status = -1;
+            }
         }
 
         public void flipDisc(bool black)
@@ -60,18 +68,17 @@ namespace WindowsFormsApplication1
                 return;
             }
             drawDisc(black);
+            //set status?
         }
 
         public void drawDisc(bool black)
         {
             if (black)
             {
-                status = 1;
                 pG.FillEllipse(blackBrush, x, y, width, height);
             }
             else
             {
-                status = -1;
                 pG.FillEllipse(whiteBrush, x, y, width, height);
             }
         }
@@ -82,17 +89,55 @@ namespace WindowsFormsApplication1
             {
                 status = 2;
                 pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
                 drawDisc(true);
             }
             else if (status == 1)
             {
                 status = -2;
                 pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
                 drawDisc(false);
             }
         }
 
-        public void eraseDisc(System.Drawing.Graphics pG)
+        public void unhighLight()
+        {
+            if (status == -2)
+            {
+                status = 1;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+                drawDisc(true);
+            }
+            else if (status == 2)
+            {
+                status = -1;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+                drawDisc(false);
+            }
+        }
+
+        public void confirm()
+        {
+            if (status == -2)
+            {
+                status = -1;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+                drawDisc(false);
+            }
+            else if (status == 2)
+            {
+                status = 1;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+                drawDisc(true);
+            }
+        }
+
+        public void eraseDisc()
         {
             pG.FillEllipse(new SolidBrush(Color.Green), x, y, width, height);
             status = 0;

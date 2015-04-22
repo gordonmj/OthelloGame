@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1
     {
 
         private Color color;
-        public int score = 0;
+        public int score = 2;
         public int discsLeft = 32;
         public int gamesWon = 0;
 

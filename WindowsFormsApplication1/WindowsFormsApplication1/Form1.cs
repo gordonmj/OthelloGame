@@ -125,7 +125,6 @@ namespace WindowsFormsApplication1
 
         private void chooseColors()
         {
-            MessageBox.Show("Choosing colors randomly");
             blackPlayer = game.assignColor(leftPlayer, rightPlayer);
             if (ReferenceEquals(blackPlayer, leftPlayer))
             {
@@ -134,7 +133,7 @@ namespace WindowsFormsApplication1
                 LeftDiscsLeft.ForeColor = Color.Black;
                 rightPlayerScore.ForeColor = Color.White;
                 RightDiscsLeft.ForeColor = Color.White;
-                MessageBox.Show("Left is black and right is white.");
+                MessageBox.Show("Color chosen randomly: Left is black and right is white.");
                 game.blackStack = leftStack;
                 game.whiteStack = rightStack;
             }
@@ -145,7 +144,7 @@ namespace WindowsFormsApplication1
                 rightPlayerScore.ForeColor = Color.Black;
                 RightDiscsLeft.ForeColor = Color.Black;
                 whitePlayer = leftPlayer;
-                MessageBox.Show("Right is black and left is white.");
+                MessageBox.Show("Color chosen randomly: Right is black and left is white.");
                 game.blackStack = rightStack;
                 game.whiteStack = leftStack;
             }

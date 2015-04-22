@@ -68,12 +68,12 @@ namespace WindowsFormsApplication1
 
         public void placeBlack(int r, int c)
         {
-            board[r, c].drawDisc(true);
+            board[r, c].placeDisc(true);
         }
 
         public void placeWhite(int r, int c)
         {
-            board[r, c].drawDisc(false);
+            board[r, c].placeDisc(false);
         }
 
         public Space whichSpace(Point pt)
@@ -113,7 +113,7 @@ namespace WindowsFormsApplication1
 
         public void undoMove()
         {
-            lastMove.eraseDisc(pG);
+            lastMove.eraseDisc();
         }
     }//class
 }//namespace
