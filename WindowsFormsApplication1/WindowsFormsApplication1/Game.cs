@@ -74,6 +74,10 @@ namespace WindowsFormsApplication1
         {
             Space toPlace = board.tryToPlace(pt, isBlack);
             int score = findFlips(toPlace);
+            if (score == -1)
+            {
+                return;
+            }
             if (isBlack)
             {
                 black.decCount();
@@ -137,7 +141,7 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Illegal move! Try again!");
                 sp.eraseDisc();
-                return 0;
+                return -1;
                 //bad move!
             }
             else
@@ -158,8 +162,9 @@ namespace WindowsFormsApplication1
                 {
                     toFlip.ForEach(unhighlight);
                     //return score
+                    undo();
                     toFlip.Clear();
-                    return 0;
+                    return -1;
                 }
                 return 0;
             }
