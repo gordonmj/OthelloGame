@@ -36,9 +36,9 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
-            //this.WindowState = FormWindowState.Normal;
-            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            //this.Bounds = Screen.PrimaryScreen.Bounds;
+            this.WindowState = FormWindowState.Normal;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Bounds = Screen.PrimaryScreen.Bounds;
 
             game = new Game();
             board = game.getBoard();
