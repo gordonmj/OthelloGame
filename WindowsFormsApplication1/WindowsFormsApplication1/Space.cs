@@ -103,8 +103,8 @@ namespace WindowsFormsApplication1
             }
             else if (status == 0)
             {
-                pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
-                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+                //pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
+                //pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
             }
         }
 
@@ -141,6 +141,49 @@ namespace WindowsFormsApplication1
                 pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
                 pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
                 drawDisc(true);
+            }
+        }
+
+        public void hint(bool black)
+        {
+            if (status == 0)
+            {
+                if (black)
+                {
+                    status = 2;
+                    pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
+                    pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+                    drawDisc(true);
+                }
+                else
+                {
+                    status = -2;
+                    pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
+                    pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+                    drawDisc(false);
+                }
+            }
+        }
+
+        public void unhint(bool black)
+        {
+            if (status == 0)
+            {
+                status = 0;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+            }
+            else if (status == 2)
+            {
+                status = 0;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+            }
+            else if (status == -2)
+            {
+                status = 0;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
             }
         }
 

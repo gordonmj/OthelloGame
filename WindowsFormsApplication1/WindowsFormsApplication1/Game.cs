@@ -15,7 +15,7 @@ namespace WindowsFormsApplication1
         public Player white = new Player();
         public DiscStack whiteStack;
         public DiscStack blackStack;
-        public int[,] directions = {{-1,-1},{-1,0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1}};
+        public int[,] directions = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 } };
         public List<Space> toFlip = new List<Space>();
 
         public Game()
@@ -77,7 +77,7 @@ namespace WindowsFormsApplication1
             {
                 return -1;
             }
-            int score = findFlips(toPlace,false);
+            int score = findFlips(toPlace, false);
             if (score == -1)
             {
                 return -1;
@@ -86,7 +86,7 @@ namespace WindowsFormsApplication1
             {
                 black.decCount();
                 blackStack.drawStack(black.discsLeft);
-                black.raiseScore(score+1);
+                black.raiseScore(score + 1);
                 white.lowerScore(score);
 
             }
@@ -94,7 +94,7 @@ namespace WindowsFormsApplication1
             {
                 white.decCount();
                 whiteStack.drawStack(white.discsLeft);
-                white.raiseScore(score+1);
+                white.raiseScore(score + 1);
                 black.lowerScore(score);
             }
             return score;
@@ -108,8 +108,8 @@ namespace WindowsFormsApplication1
 
         public Space next(Space sp, int d)
         {
-            int newC = sp.col + directions[d,1];
-            int newR = sp.row + directions[d,0];
+            int newC = sp.col + directions[d, 1];
+            int newR = sp.row + directions[d, 0];
             if (newC < 0 || newC > 7 || newR < 0 || newR > 7) return null;
             else return board.board[newR, newC];
         }
@@ -143,18 +143,18 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("last space is: " + m.status);
                 }
             }//for each direction
-                //MessageBox.Show("Number to flip: " + toFlip.Count());
-                if (!isHintSearch)
+            //MessageBox.Show("Number to flip: " + toFlip.Count());
+            if (!isHintSearch)
+            {
+                if (toFlip.Count() <= 0)
                 {
-                    if (toFlip.Count() <= 0)
-                    {
-                        MessageBox.Show("Illegal move! Try again!");
-                        sp.eraseDisc();
-                        return -1;
-                        //bad move!
-                    }
-                    else
-                    {
+                    MessageBox.Show("Illegal move! Try again!");
+                    sp.eraseDisc();
+                    return -1;
+                    //bad move!
+                }
+                else
+                {
                     toFlip.ForEach(highlight);
                     DialogResult answer = MessageBox.Show("Confirm that move?", "Confirm?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (answer == DialogResult.Yes)
@@ -171,13 +171,14 @@ namespace WindowsFormsApplication1
                         toFlip.ForEach(unhighlight);
                         //return score
                         sp.eraseDisc();
+                        sp.unhighLight();
                         toFlip.Clear();
                         return -1;
                     }
                     return 0;
-                    }//flips pos
-                }//is hint search
-                return toFlip.Count();
+                }//flips pos
+            }//is hint search
+            return toFlip.Count();
         }//method
 
         public static void highlight(Space s)
@@ -198,24 +199,26 @@ namespace WindowsFormsApplication1
         public int hint(bool black)
         {
 
-            int[,] scores = new int[8,8];
+            int[,] scores = new int[8, 8];
             int maxR = 0;
             int maxC = 0;
             for (int r = 0; r < 8; r++)
             {
                 for (int c = 0; c < 8; c++)
                 {
-                    if (r == 2 && c == 4)
-                    {
-                        MessageBox.Show("!");
-                    }
                     Space here = board.board[r, c];
-                    int flips = findFlips(here,true);
+                    if (here.status != 0)
+                    {
+                        continue;
+                    }
+                    here.placeDisc(black);
+                    int flips = findFlips(here, true);
+                    here.eraseDisc();
                     if (flips > 0)
                     {
-                        MessageBox.Show(r+","+c+" has "+flips);
+                        //MessageBox.Show(r+","+c+" has "+flips);
                         scores[r, c] = flips;
-                        if (flips > scores[maxR,maxC])
+                        if (flips > scores[maxR, maxC])
                         {
                             maxR = r;
                             maxC = c;
@@ -225,8 +228,8 @@ namespace WindowsFormsApplication1
             }//for r
             MessageBox.Show("max is " + scores[maxR, maxC] + " at " + maxR + ", " + maxC);
             Space max = board.board[maxR, maxC];
-            max.highLight();
-            return findFlips(max,false);
+            max.hint(black);
+            return findFlips(max, false);
         }//method
     }
 }
