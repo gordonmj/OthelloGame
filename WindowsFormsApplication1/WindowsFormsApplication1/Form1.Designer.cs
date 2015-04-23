@@ -33,7 +33,6 @@
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chooseColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.switchTurnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.justFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoLastMoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -44,6 +43,7 @@
             this.rightPlayerScore = new System.Windows.Forms.Label();
             this.leftPlayerScore = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.hintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -76,8 +76,8 @@
             this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.chooseColorsToolStripMenuItem,
             this.switchTurnToolStripMenuItem,
-            this.justFlipToolStripMenuItem,
-            this.undoLastMoveToolStripMenuItem});
+            this.undoLastMoveToolStripMenuItem,
+            this.hintToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.gameToolStripMenuItem.Text = "Game";
@@ -95,13 +95,6 @@
             this.switchTurnToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.switchTurnToolStripMenuItem.Text = "Switch turn";
             this.switchTurnToolStripMenuItem.Click += new System.EventHandler(this.switchTurnToolStripMenuItem_Click);
-            // 
-            // justFlipToolStripMenuItem
-            // 
-            this.justFlipToolStripMenuItem.Name = "justFlipToolStripMenuItem";
-            this.justFlipToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.justFlipToolStripMenuItem.Text = "Just flip";
-            this.justFlipToolStripMenuItem.Click += new System.EventHandler(this.justFlipToolStripMenuItem_Click);
             // 
             // undoLastMoveToolStripMenuItem
             // 
@@ -209,6 +202,13 @@
             this.panel3.TabIndex = 5;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
+            // hintToolStripMenuItem
+            // 
+            this.hintToolStripMenuItem.Name = "hintToolStripMenuItem";
+            this.hintToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.hintToolStripMenuItem.Text = "Hint";
+            this.hintToolStripMenuItem.Click += new System.EventHandler(this.hintToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,7 +248,7 @@
         private System.Windows.Forms.Label WhoseTurn;
         private System.Windows.Forms.Label RightDiscsLeft;
         private System.Windows.Forms.ToolStripMenuItem switchTurnToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem justFlipToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem undoLastMoveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hintToolStripMenuItem;
     }
 }

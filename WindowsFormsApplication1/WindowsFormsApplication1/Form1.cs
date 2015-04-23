@@ -214,5 +214,17 @@ namespace WindowsFormsApplication1
         {
             game.undo();
         }
+
+        private void hintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int status = game.hint(blackTurn);
+            if (status == -1)
+            {
+                return;
+            }
+            updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
+            blackTurn = !blackTurn; //will have to move
+            setTurn();
+        }
     }
 }
