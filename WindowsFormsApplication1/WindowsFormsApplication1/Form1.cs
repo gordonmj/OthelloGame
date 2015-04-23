@@ -39,7 +39,10 @@ namespace WindowsFormsApplication1
             this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Bounds = Screen.PrimaryScreen.Bounds;
-
+            if (this.Bounds.Height < panel1.Size.Height-200)
+            {
+                panel1.Size = panel1.MinimumSize;
+            }
             game = new Game();
             board = game.getBoard();
             leftPlayer = game.getPlayer();
@@ -165,6 +168,11 @@ namespace WindowsFormsApplication1
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
+            if (!gameStarted)
+            {
+                MessageBox.Show("Choose colors first!");
+                return;
+            }
             game.tryToPlace(e.Location, blackTurn);
             updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
             blackTurn = !blackTurn; //will have to move
