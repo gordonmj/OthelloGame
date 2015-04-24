@@ -254,6 +254,18 @@ namespace WindowsFormsApplication1
             {
                 return;
             }
+            else if (status == 0)
+            {
+                MessageBox.Show("No moves left for this player.");
+                if (noMoreMoves)
+                {
+                    MessageBox.Show("Game over!");
+                    return;
+                }
+                noMoreMoves = true;
+                blackTurn = !blackTurn; //will have to move
+                setTurn();
+            }
             //updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
             //blackTurn = !blackTurn; //will have to move
             //setTurn();

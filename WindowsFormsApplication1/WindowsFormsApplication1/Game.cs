@@ -240,6 +240,10 @@ namespace WindowsFormsApplication1
                 }//for c
             }//for r
             //MessageBox.Show("max is " + scores[maxR, maxC] + " at " + maxR + ", " + maxC);
+            if (scores[maxR, maxC] == 0)
+            {
+                return 0;
+            }
             Space max = board.board[maxR, maxC];
             //MessageBox.Show("Max is at " + maxR + "," + maxC + " with flips: "+scores[maxR,maxC]);
             max.placeDisc(!isBlack);
@@ -271,7 +275,7 @@ namespace WindowsFormsApplication1
             //    whitePlayer.raiseScore(score + 1);
             //    blackPlayer.lowerScore(score);
             //}
-            return -1;
+            return score;
         }//method
 
         public int flipManual(Point pt)
