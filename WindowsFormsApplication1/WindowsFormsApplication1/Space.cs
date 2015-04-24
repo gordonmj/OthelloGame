@@ -155,6 +155,20 @@ namespace WindowsFormsApplication1
                 pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
                 drawDisc(true);
             }
+            else if (status == 1)
+            {
+                status = 1;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+                drawDisc(true);
+            }
+            else if (status == -1)
+            {
+                status = 1;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+                drawDisc(false);
+            }
         }
 
         public void hint(bool black)
@@ -163,14 +177,14 @@ namespace WindowsFormsApplication1
             {
                 if (black)
                 {
-                    status = 2;
+                    status = 1;
                     pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
                     pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
                     drawDisc(true);
                 }
                 else
                 {
-                    status = -2;
+                    status = -1;
                     pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
                     pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
                     drawDisc(false);
@@ -186,15 +200,21 @@ namespace WindowsFormsApplication1
                 pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
                 pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
             }
-            else if (status == 2)
+            else if (status == 1)
             {
                 status = 0;
                 pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
                 pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
             }
-            else if (status == -2)
+            else if (status == -1)
             {
                 status = 0;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+            }
+            else
+            {
+                MessageBox.Show("status is " + status);
                 pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
                 pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
             }

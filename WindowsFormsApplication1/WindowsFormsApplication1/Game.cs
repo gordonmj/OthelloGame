@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         public DiscStack blackStack;
         public int[,] directions = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 } };
         public List<Space> toFlip = new List<Space>();
+        public static bool isBlack;
 
         public Game()
         {
@@ -196,9 +197,19 @@ namespace WindowsFormsApplication1
             s.unhighLight();
         }
 
+        public static void hint(Space s)
+        {
+            s.hint(isBlack);
+        }
+
+        public static void unhint(Space s)
+        {
+            s.unhint(isBlack);
+        }
+
         public int hint(bool black)
         {
-
+            isBlack = black;
             int[,] scores = new int[8, 8];
             int maxR = 0;
             int maxC = 0;
@@ -213,6 +224,7 @@ namespace WindowsFormsApplication1
                     }
                     here.placeDisc(black);
                     int flips = findFlips(here, true);
+                    toFlip.Clear();
                     here.eraseDisc();
                     if (flips > 0)
                     {
@@ -226,9 +238,32 @@ namespace WindowsFormsApplication1
                     }// if positive (unnec?)
                 }//for c
             }//for r
-            MessageBox.Show("max is " + scores[maxR, maxC] + " at " + maxR + ", " + maxC);
+            //MessageBox.Show("max is " + scores[maxR, maxC] + " at " + maxR + ", " + maxC);
             Space max = board.board[maxR, maxC];
             max.hint(black);
+            findFlips(max, true);
+            toFlip.ForEach(highlight);
+            DialogResult answer = MessageBox.Show("Confirm that move?", "Confirm?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (answer == DialogResult.Yes)
+            {
+                toFlip.ForEach(confirm);
+                //return score
+                int score = toFlip.Count();
+                toFlip.Clear();
+                max.confirm();
+                return score;
+            }
+
+            else if (answer == DialogResult.No)
+            {
+                toFlip.ForEach(unhint);
+                //return score
+                max.eraseDisc();
+                max.unhint(black);
+                toFlip.Clear();
+                return -1;
+            }
+            toFlip.Clear();
             return findFlips(max, false);
         }//method
 
