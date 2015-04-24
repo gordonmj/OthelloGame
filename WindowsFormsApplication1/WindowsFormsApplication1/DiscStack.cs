@@ -30,7 +30,7 @@ namespace WindowsFormsApplication1
         {
             pG.Clear(Color.DarkGray);
             int stackWidth = (p.Width - 10);
-            int stackHeight = (p.Height - 5) / 64;
+            int stackHeight = (p.Height - stackWidth) / 64;
             for (int i = 0; i < discsLeft * 2; i++)
             {
                 if (i % 2 == 0)

@@ -231,5 +231,26 @@ namespace WindowsFormsApplication1
             max.hint(black);
             return findFlips(max, false);
         }//method
+
+        public void flipManual(Point pt)
+        {
+            Space toPlace = board.flipMan(pt);
+            if (toPlace.status == 0)
+            {
+                MessageBox.Show("Please click a white or black piece.");
+            }
+            else if (toPlace.status == 1)
+            {
+                toPlace.flipDiscMan(false);
+            }
+            else if (toPlace.status == -1)
+            {
+                toPlace.flipDiscMan(true);
+            }
+            else
+            {
+                MessageBox.Show("Please click a white or black piece.");
+            }
+        }
     }
 }

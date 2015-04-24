@@ -32,6 +32,7 @@ namespace WindowsFormsApplication1
         bool noMoreMoves = false;
         bool gameStarted = false;
         private bool blackTurn = true;
+        private bool flipManual = false;
 
         public Form1()
         {
@@ -126,6 +127,7 @@ namespace WindowsFormsApplication1
         private void chooseColors()
         {
             blackPlayer = game.assignColor(leftPlayer, rightPlayer);
+            int width = (panel1.Width - 30) / 8;
             if (ReferenceEquals(blackPlayer, leftPlayer))
             {
                 whitePlayer = rightPlayer;
@@ -136,6 +138,8 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Color chosen randomly: Left is black and right is white.");
                 game.blackStack = leftStack;
                 game.whiteStack = rightStack;
+                pG3.FillEllipse(new SolidBrush(Color.White), 5, panel3.Height - (width-10), width, width);
+                pG2.FillEllipse(new SolidBrush(Color.Black), 5, panel3.Height - (width-10), width, width);
             }
             else
             {
@@ -147,6 +151,8 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Color chosen randomly: Right is black and left is white.");
                 game.blackStack = rightStack;
                 game.whiteStack = leftStack;
+                pG3.FillEllipse(new SolidBrush(Color.Black), 5, panel3.Height - (width-10), width, width);
+                pG2.FillEllipse(new SolidBrush(Color.White), 5, panel3.Height - (width-10), width, width);
             }
             game.setPlayer(blackPlayer, whitePlayer);
         }
@@ -165,14 +171,24 @@ namespace WindowsFormsApplication1
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-            int status = game.tryToPlace(e.Location, blackTurn);
-            if (status == -1)
+            if (flipManual)
             {
-                return;
+                game.flipManual(e.Location);
             }
-            updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
-            blackTurn = !blackTurn; //will have to move
-            setTurn();
+            else
+            {
+                int status = game.tryToPlace(e.Location, blackTurn);
+                if (status == -1)
+                {
+                    return;
+                }
+                updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
+                blackTurn = !blackTurn; //will have to move
+                setTurn();
+            }
+
+
+
         }
 
         private void updateScoreboard(int newBlack, int newWhite)
@@ -225,6 +241,16 @@ namespace WindowsFormsApplication1
             updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
             blackTurn = !blackTurn; //will have to move
             setTurn();
+        }
+
+        private void flipManuallyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flipManual = true;
+        }
+
+        private void flipAutomaticallyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flipManual = false;
         }
     }
 }

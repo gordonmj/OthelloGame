@@ -73,6 +73,19 @@ namespace WindowsFormsApplication1
             //set status?
         }
 
+        public void flipDiscMan(bool black)
+        {
+            drawDisc(black);
+            if (black)
+            {
+                status = 1;
+            }
+            else
+            {
+                status = -1;
+            }
+        }
+
         public void drawDisc(bool black)
         {
             if (black)

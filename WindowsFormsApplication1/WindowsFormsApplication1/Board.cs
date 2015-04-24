@@ -114,6 +114,19 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public Space flipMan(Point pt)
+        {
+            if (whichSpace(pt) != null)
+            {
+                Space toPlace = whichSpace(pt);
+                return toPlace;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public void undoMove()
         {
             lastMove.eraseDisc();
