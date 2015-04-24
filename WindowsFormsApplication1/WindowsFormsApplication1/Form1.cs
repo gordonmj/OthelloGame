@@ -172,6 +172,11 @@ namespace WindowsFormsApplication1
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
+            if (!gameStarted)
+            {
+                MessageBox.Show("Choose colors first!");
+                return;
+            }
             if (flipManual)
             {
                 int status = game.flipManual(e.Location);
