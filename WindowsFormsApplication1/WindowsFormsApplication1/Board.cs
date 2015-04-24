@@ -58,6 +58,11 @@ namespace WindowsFormsApplication1
             }//for
         }//method
 
+        public void clearBoard()
+        {
+            board = new Space[8, 8];
+        }
+
         public void initConfig()
         {
             placeBlack(3, 3);
@@ -130,6 +135,61 @@ namespace WindowsFormsApplication1
         public void undoMove()
         {
             lastMove.eraseDisc();
+        }
+
+        public String boardToString()
+        {
+            String s = "";
+            for (int r = 0; r < 8; r++)
+            {
+                for (int c = 0; c < 8; c++)
+                {
+                    s += board[r, c].status + " ";
+                }//columns
+                s += Environment.NewLine;
+            }//rows
+            return s;
+        }
+
+
+        public int stringToBoard(String fileName)
+        {
+            try
+            {
+                            if (fileName == null)
+            {
+                MessageBox.Show("You must select an input file first. Use 'Image>Load'");
+                return -1;
+            }
+            string[] lines = System.IO.File.ReadAllLines(@fileName);
+            char[] delims = { ' ', '\n' };
+            string[] firstLine = lines[0].Split(delims);
+            clearBoard();
+            for (int r = 0; r < 8; r++)
+            {
+                string[] nextLine = lines[r].Split(delims);
+                for (int c = 0; c < 8; c++)
+                {
+                    int stat = Convert.ToInt32(nextLine[c]);
+                    Space newSpace = new Space(r, c, width, height, pG);
+                    board[r, c] = newSpace;
+                    if (stat == 1)
+                    {
+                        newSpace.placeDisc(true);
+                    }
+                    else if (stat == -1)
+                    {
+                        newSpace.placeDisc(false);
+                    }
+                    newSpace.status = stat;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Failure. Please try again with a valid text file.");
+            }
+            return 0;
         }
     }//class
 }//namespace

@@ -308,5 +308,34 @@ namespace WindowsFormsApplication1
         {
             pG5 = panel5.CreateGraphics();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Text|*.txt";
+            save.Title = "Save the image";
+            String textToSave = game.board.boardToString();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.File.WriteAllText(save.FileName, textToSave);
+            }
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.Filter = "Plaintext Files|*.txt";
+            oFD.Title = "Select a Plaintext File";
+            if (oFD.ShowDialog() == DialogResult.OK)
+            {
+                String fileName = oFD.FileName;
+                game.board.stringToBoard(fileName);
+            }
+        }
     }
 }
