@@ -11,8 +11,8 @@ namespace WindowsFormsApplication1
     class Game
     {
         public Board board;
-        public Player black = new Player();
-        public Player white = new Player();
+        public Player blackPlayer = new Player();
+        public Player whitePlayer = new Player();
         public DiscStack whiteStack;
         public DiscStack blackStack;
         public int[,] directions = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 } };
@@ -41,10 +41,10 @@ namespace WindowsFormsApplication1
             return new Player();
         }
 
-        public void setPlayer(Player blackPlayer, Player whitePlayer)
+        public void setPlayer(Player bP, Player wP)
         {
-            black = blackPlayer;
-            white = whitePlayer;
+            blackPlayer = bP;
+            whitePlayer = wP;
         }
 
         public Player assignColor(Player p1, Player p2)
@@ -85,18 +85,17 @@ namespace WindowsFormsApplication1
             }
             if (isBlack)
             {
-                black.decCount();
-                blackStack.drawStack(black.discsLeft);
-                black.raiseScore(score + 1);
-                white.lowerScore(score);
-
+                blackPlayer.decCount();
+                blackStack.drawStack(blackPlayer.discsLeft);
+                blackPlayer.raiseScore(score + 1);
+                whitePlayer.lowerScore(score);
             }
             else
             {
-                white.decCount();
-                whiteStack.drawStack(white.discsLeft);
-                white.raiseScore(score + 1);
-                black.lowerScore(score);
+                whitePlayer.decCount();
+                whiteStack.drawStack(whitePlayer.discsLeft);
+                whitePlayer.raiseScore(score + 1);
+                blackPlayer.lowerScore(score);
             }
             return score;
         }
@@ -117,6 +116,7 @@ namespace WindowsFormsApplication1
 
         public int findFlips(Space sp, bool isHintSearch)
         {
+            int score = -1;
             for (int d = 0; d < 8; d++)
             {
                 List<Space> tentative = new List<Space>();
@@ -162,7 +162,7 @@ namespace WindowsFormsApplication1
                     {
                         toFlip.ForEach(confirm);
                         //return score
-                        int score = toFlip.Count();
+                        score = toFlip.Count();
                         toFlip.Clear();
                         return score;
                     }
@@ -176,7 +176,7 @@ namespace WindowsFormsApplication1
                         toFlip.Clear();
                         return -1;
                     }
-                    return 0;
+                    return score;
                 }//flips pos
             }//is hint search
             return toFlip.Count();
@@ -209,6 +209,7 @@ namespace WindowsFormsApplication1
 
         public int hint(bool black)
         {
+            int score = 0;
             isBlack = black;
             int[,] scores = new int[8, 8];
             int maxR = 0;
@@ -240,31 +241,37 @@ namespace WindowsFormsApplication1
             }//for r
             //MessageBox.Show("max is " + scores[maxR, maxC] + " at " + maxR + ", " + maxC);
             Space max = board.board[maxR, maxC];
-            max.hint(black);
+            //MessageBox.Show("Max is at " + maxR + "," + maxC + " with flips: "+scores[maxR,maxC]);
+            max.placeDisc(!isBlack);
             findFlips(max, true);
             toFlip.ForEach(highlight);
-            DialogResult answer = MessageBox.Show("Confirm that move?", "Confirm?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (answer == DialogResult.Yes)
-            {
-                toFlip.ForEach(confirm);
+            max.highLight();
+            max.status = 0;
+            MessageBox.Show("Here's your hint");
+                toFlip.ForEach(unhighlight);
                 //return score
-                int score = toFlip.Count();
-                toFlip.Clear();
-                max.confirm();
-                return score;
-            }
-
-            else if (answer == DialogResult.No)
-            {
-                toFlip.ForEach(unhint);
-                //return score
+                max.unhighLight();
                 max.eraseDisc();
-                max.unhint(black);
                 toFlip.Clear();
-                return -1;
-            }
-            toFlip.Clear();
-            return findFlips(max, false);
+            //if (score == -1)
+            //{
+            //    return -1;
+            //}
+            //if (black)
+            //{
+            //    blackPlayer.decCount();
+            //    blackStack.drawStack(blackPlayer.discsLeft);
+            //    blackPlayer.raiseScore(score + 1);
+            //    whitePlayer.lowerScore(score);
+            //}
+            //else
+            //{
+            //    whitePlayer.decCount();
+            //    whiteStack.drawStack(whitePlayer.discsLeft);
+            //    whitePlayer.raiseScore(score + 1);
+            //    blackPlayer.lowerScore(score);
+            //}
+            return -1;
         }//method
 
         public int flipManual(Point pt)
@@ -278,15 +285,15 @@ namespace WindowsFormsApplication1
             else if (toPlace.status == 1)
             {
                 toPlace.flipDiscMan(false);
-                white.raiseScore(1);
-                black.lowerScore(1);
+                whitePlayer.raiseScore(1);
+                blackPlayer.lowerScore(1);
                 return 0;
             }
             else if (toPlace.status == -1)
             {
                 toPlace.flipDiscMan(true);
-                black.raiseScore(1);
-                white.lowerScore(1);
+                blackPlayer.raiseScore(1);
+                whitePlayer.lowerScore(1);
                 return 0;
             }
             else

@@ -137,6 +137,12 @@ namespace WindowsFormsApplication1
                 pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
                 drawDisc(false);
             }
+            else
+            {
+                status = 0;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+            }
         }
 
         public void confirm()

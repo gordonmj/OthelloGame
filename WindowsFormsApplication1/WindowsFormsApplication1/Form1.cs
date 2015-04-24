@@ -193,6 +193,11 @@ namespace WindowsFormsApplication1
                 {
                     return;
                 }
+                if (status == 0)
+                {
+                    MessageBox.Show("Illegal move!");
+                    return;
+                }
                 updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
                 blackTurn = !blackTurn; //will have to move
                 setTurn();
@@ -249,9 +254,9 @@ namespace WindowsFormsApplication1
             {
                 return;
             }
-            updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
-            blackTurn = !blackTurn; //will have to move
-            setTurn();
+            //updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
+            //blackTurn = !blackTurn; //will have to move
+            //setTurn();
         }
 
         private void flipManuallyToolStripMenuItem_Click(object sender, EventArgs e)
