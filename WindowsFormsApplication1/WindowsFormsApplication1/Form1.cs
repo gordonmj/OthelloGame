@@ -18,8 +18,8 @@ namespace WindowsFormsApplication1
         private System.Drawing.Graphics pG1;
         private System.Drawing.Graphics pG2;
         private System.Drawing.Graphics pG3;
-        //private System.Drawing.Graphics pG4;
-        //private System.Drawing.Graphics pG5;
+        private System.Drawing.Graphics pG4;
+        private System.Drawing.Graphics pG5;
         private System.Drawing.Graphics pG6;
         //private System.Drawing.Graphics pG7;
         Board board;
@@ -128,7 +128,6 @@ namespace WindowsFormsApplication1
         private void chooseColors()
         {
             blackPlayer = game.assignColor(leftPlayer, rightPlayer);
-            int width = (panel1.Width - 30) / 8;
             if (ReferenceEquals(blackPlayer, leftPlayer))
             {
                 whitePlayer = rightPlayer;
@@ -139,8 +138,8 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Color chosen randomly: Left is black and right is white.");
                 game.blackStack = leftStack;
                 game.whiteStack = rightStack;
-                pG3.FillEllipse(new SolidBrush(Color.White), 5, panel3.Height - (width-10), width, width);
-                pG2.FillEllipse(new SolidBrush(Color.Black), 5, panel3.Height - (width-10), width, width);
+                pG5.FillEllipse(new SolidBrush(Color.White), 0, 0, panel4.Width, panel4.Width);
+                pG4.FillEllipse(new SolidBrush(Color.Black), 0, 0, panel4.Width, panel4.Width);
             }
             else
             {
@@ -152,8 +151,8 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Color chosen randomly: Right is black and left is white.");
                 game.blackStack = rightStack;
                 game.whiteStack = leftStack;
-                pG3.FillEllipse(new SolidBrush(Color.Black), 5, panel3.Height - (width-10), width, width);
-                pG2.FillEllipse(new SolidBrush(Color.White), 5, panel3.Height - (width-10), width, width);
+                pG4.FillEllipse(new SolidBrush(Color.White), 0, 0, panel4.Width, panel4.Width);
+                pG5.FillEllipse(new SolidBrush(Color.Black), 0, 0, panel4.Width, panel4.Width);
             }
             game.setPlayer(blackPlayer, whitePlayer);
         }
@@ -211,16 +210,16 @@ namespace WindowsFormsApplication1
         {
             if (whitePlayer == leftPlayer)
             {
-                leftPlayerScore.Text = "Score: " + newWhite;
+                leftPlayerScore.Text = "Alice's score: " + newWhite;
                 LeftDiscsLeft.Text = "Discs left: " + whitePlayer.discsLeft;
-                rightPlayerScore.Text = "Score: " + newBlack;
+                rightPlayerScore.Text = "Bob's score: " + newBlack;
                 RightDiscsLeft.Text = "Discs left: " + blackPlayer.discsLeft;
             }
             else
             {
-                leftPlayerScore.Text = "Score: " + newBlack;
+                leftPlayerScore.Text = "Alice's score: " + newBlack;
                 LeftDiscsLeft.Text = "Discs left: " + blackPlayer.discsLeft;
-                rightPlayerScore.Text = "Score: " + newWhite;
+                rightPlayerScore.Text = "Bob's score: " + newWhite;
                 RightDiscsLeft.Text = "Discs left: " + whitePlayer.discsLeft;
             }
 
@@ -260,6 +259,14 @@ namespace WindowsFormsApplication1
                 if (noMoreMoves)
                 {
                     MessageBox.Show("Game over!");
+                    if (leftPlayer.getScore() > rightPlayer.getScore())
+                    {
+                        MessageBox.Show("The winner is left player "+leftPlayer.getScore()+" to "+rightPlayer.getScore());
+                    }
+                    else
+                    {
+                        MessageBox.Show("The winner is right player " + rightPlayer.getScore() + " to " + leftPlayer.getScore());
+                    }
                     return;
                 }
                 noMoreMoves = true;
@@ -290,6 +297,16 @@ namespace WindowsFormsApplication1
                 WhoseTurn.Text = "White's turn";
                 WhoseTurn.ForeColor = Color.White;
             }
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+            pG4 = panel4.CreateGraphics();
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+            pG5 = panel5.CreateGraphics();
         }
     }
 }
