@@ -45,6 +45,7 @@ namespace WindowsFormsApplication1
             board = game.getBoard();
             leftPlayer = game.getPlayer();
             rightPlayer = game.getPlayer();
+
             if (noMoreMoves)
             {
                 //endgame
@@ -173,7 +174,12 @@ namespace WindowsFormsApplication1
         {
             if (flipManual)
             {
-                game.flipManual(e.Location);
+                int status = game.flipManual(e.Location);
+                if (status == -1)
+                {
+                    return;
+                }
+                updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
             }
             else
             {
@@ -246,11 +252,22 @@ namespace WindowsFormsApplication1
         private void flipManuallyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             flipManual = true;
+            WhoseTurn.Text = "Manual flip mode";
         }
 
         private void flipAutomaticallyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             flipManual = false;
+            if (blackTurn)
+            {
+                WhoseTurn.Text = "Black's turn";
+                WhoseTurn.ForeColor = Color.Black;
+            }
+            else
+            {
+                WhoseTurn.Text = "White's turn";
+                WhoseTurn.ForeColor = Color.White;
+            }
         }
     }
 }

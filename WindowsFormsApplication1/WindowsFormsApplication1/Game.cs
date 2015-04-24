@@ -232,24 +232,32 @@ namespace WindowsFormsApplication1
             return findFlips(max, false);
         }//method
 
-        public void flipManual(Point pt)
+        public int flipManual(Point pt)
         {
             Space toPlace = board.flipMan(pt);
             if (toPlace.status == 0)
             {
                 MessageBox.Show("Please click a white or black piece.");
+                return 0;
             }
             else if (toPlace.status == 1)
             {
                 toPlace.flipDiscMan(false);
+                white.raiseScore(1);
+                black.lowerScore(1);
+                return 0;
             }
             else if (toPlace.status == -1)
             {
                 toPlace.flipDiscMan(true);
+                black.raiseScore(1);
+                white.lowerScore(1);
+                return 0;
             }
             else
             {
                 MessageBox.Show("Please click a white or black piece.");
+                return -1;
             }
         }
     }
