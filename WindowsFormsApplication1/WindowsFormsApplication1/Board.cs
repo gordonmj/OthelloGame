@@ -49,6 +49,7 @@ namespace WindowsFormsApplication1
                 for (int c = 0; c < 8; c++)
                 {
                     //dots go at 2,2 6,2 2,6 6,6
+                    pG.FillRectangle(new SolidBrush(Color.Green), width * c, height * r, width, height);
                     pG.DrawRectangle(new Pen(blackBrush), width * c, height * r, width, height);
                     if ((r == 2 || r == 6) && (c == 2 || c == 6))
                     {

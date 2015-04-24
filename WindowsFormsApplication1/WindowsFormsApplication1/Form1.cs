@@ -337,5 +337,21 @@ namespace WindowsFormsApplication1
                 game.board.stringToBoard(fileName);
             }
         }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            game.board.clearBoard();
+            game.board.setUpBoard(panel1, pG1);
+            game.board.layoutBoard();
+            game.board.initConfig();
+            blackPlayer.setScore(2);
+            whitePlayer.setScore(2);
+            blackPlayer.discsLeft = 32;
+            whitePlayer.discsLeft = 32;
+            blackTurn = true;
+            WhoseTurn.Text = "Black's turn";
+            WhoseTurn.ForeColor = Color.Black; 
+            updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
+        }
     }
 }
