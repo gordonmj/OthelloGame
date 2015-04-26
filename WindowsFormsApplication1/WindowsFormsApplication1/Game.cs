@@ -209,7 +209,7 @@ namespace WindowsFormsApplication1
 
         public int hint(bool black)
         {
-            int score = 0;
+            int score = -1;
             isBlack = black;
             int[,] scores = new int[8, 8];
             int maxR = 0;

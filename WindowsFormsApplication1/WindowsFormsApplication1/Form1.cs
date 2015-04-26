@@ -263,9 +263,13 @@ namespace WindowsFormsApplication1
                     {
                         MessageBox.Show("The winner is left player "+leftPlayer.getScore()+" to "+rightPlayer.getScore());
                     }
-                    else
+                    else if (leftPlayer.getScore() < rightPlayer.getScore())
                     {
                         MessageBox.Show("The winner is right player " + rightPlayer.getScore() + " to " + leftPlayer.getScore());
+                    }
+                    else
+                    {
+                        MessageBox.Show("It's a tie " + rightPlayer.getScore() + " to " + leftPlayer.getScore());
                     }
                     return;
                 }
