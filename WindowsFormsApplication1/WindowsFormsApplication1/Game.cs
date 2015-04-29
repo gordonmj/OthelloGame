@@ -74,6 +74,9 @@ namespace WindowsFormsApplication1
 
         public int tryToPlace(Point pt, bool isBlack)
         {
+            toFlip.Clear();
+            toHint.ForEach(unhint);
+            toHint.Clear();
             Space toPlace = board.tryToPlace(pt, isBlack);
             if (toPlace == null)
             {
@@ -84,6 +87,19 @@ namespace WindowsFormsApplication1
             {
                 return -1;
             }
+            if (toPlace.status == 3 || toPlace.status == -3)
+            {
+                toPlace.confirmHint(isBlack);
+                toPlace.highLight();
+                toFlip.ForEach(highlight);
+                System.Threading.Thread.Sleep(10000);
+            }
+            if (!Form1.hintOn)
+            {
+                toPlace.placeDisc(isBlack);
+            }
+//            toHint.Remove(toPlace);
+//            toHint.ForEach(unhint);
             if (isBlack)
             {
                 blackPlayer.decCount();
@@ -215,8 +231,14 @@ namespace WindowsFormsApplication1
             s.unhint(isBlack);
         }
 
+        public static void confirmHint(Space s)
+        {
+            s.confirmHint(isBlack);
+        }
+
         public int hint(bool black)
         {
+
             int score = -1;
             isBlack = black;
             int[,] scores = new int[8, 8];
@@ -233,7 +255,7 @@ namespace WindowsFormsApplication1
                     }
                     here.placeDisc(black);
                     int flips = findFlips(here, true);
-                    //toFlip.Clear();
+                    toFlip.Clear();
                     if (flips > 0)
                     {
                         //MessageBox.Show(r+","+c+" has "+flips);
@@ -265,13 +287,8 @@ namespace WindowsFormsApplication1
             toHint.ForEach(hint);
             toFlip.ForEach(highlight);
             //max.highLight();
-            max.status = 0;
-            MessageBox.Show("Here's your hint");
-                toFlip.ForEach(unhighlight);
-                toHint.ForEach(unhint);
                 //return score
 //                max.unhighLight();
-                max.eraseDisc();
                 toFlip.Clear();
             //if (score == -1)
             //{

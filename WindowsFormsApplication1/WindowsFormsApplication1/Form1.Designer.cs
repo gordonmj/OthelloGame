@@ -60,6 +60,7 @@
             this.saveGame = new System.Windows.Forms.Button();
             this.loadGame = new System.Windows.Forms.Button();
             this.resetGame = new System.Windows.Forms.Button();
+            this.hintOff = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -240,9 +241,9 @@
             this.rightPlayerScore.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.rightPlayerScore.Location = new System.Drawing.Point(567, 5);
             this.rightPlayerScore.Name = "rightPlayerScore";
-            this.rightPlayerScore.Size = new System.Drawing.Size(268, 42);
+            this.rightPlayerScore.Size = new System.Drawing.Size(275, 42);
             this.rightPlayerScore.TabIndex = 1;
-            this.rightPlayerScore.Text = "Bob\'s score: 2";
+            this.rightPlayerScore.Text = "Alex\'s score: 2";
             this.rightPlayerScore.Click += new System.EventHandler(this.rightPlayerInfo_Click);
             // 
             // leftPlayerScore
@@ -252,9 +253,9 @@
             this.leftPlayerScore.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.leftPlayerScore.Location = new System.Drawing.Point(3, 7);
             this.leftPlayerScore.Name = "leftPlayerScore";
-            this.leftPlayerScore.Size = new System.Drawing.Size(284, 42);
+            this.leftPlayerScore.Size = new System.Drawing.Size(321, 42);
             this.leftPlayerScore.TabIndex = 0;
-            this.leftPlayerScore.Text = "Alice\'s score: 2";
+            this.leftPlayerScore.Text = "Sophia\'s score: 2";
             this.leftPlayerScore.Click += new System.EventHandler(this.leftPlayerInfo_Click);
             // 
             // panel3
@@ -333,7 +334,7 @@
             this.hint.Name = "hint";
             this.hint.Size = new System.Drawing.Size(154, 39);
             this.hint.TabIndex = 11;
-            this.hint.Text = "Hint";
+            this.hint.Text = "Hint On";
             this.hint.UseVisualStyleBackColor = true;
             this.hint.Click += new System.EventHandler(this.hint_Click);
             // 
@@ -342,7 +343,7 @@
             this.flipMan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flipMan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flipMan.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.flipMan.Location = new System.Drawing.Point(1213, 319);
+            this.flipMan.Location = new System.Drawing.Point(1213, 384);
             this.flipMan.Name = "flipMan";
             this.flipMan.Size = new System.Drawing.Size(154, 39);
             this.flipMan.TabIndex = 12;
@@ -355,7 +356,7 @@
             this.flipAuto.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flipAuto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flipAuto.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.flipAuto.Location = new System.Drawing.Point(1213, 384);
+            this.flipAuto.Location = new System.Drawing.Point(1213, 456);
             this.flipAuto.Name = "flipAuto";
             this.flipAuto.Size = new System.Drawing.Size(154, 39);
             this.flipAuto.TabIndex = 13;
@@ -368,7 +369,7 @@
             this.saveGame.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.saveGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveGame.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.saveGame.Location = new System.Drawing.Point(1213, 453);
+            this.saveGame.Location = new System.Drawing.Point(1213, 525);
             this.saveGame.Name = "saveGame";
             this.saveGame.Size = new System.Drawing.Size(154, 39);
             this.saveGame.TabIndex = 14;
@@ -381,7 +382,7 @@
             this.loadGame.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loadGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadGame.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.loadGame.Location = new System.Drawing.Point(1213, 519);
+            this.loadGame.Location = new System.Drawing.Point(1213, 591);
             this.loadGame.Name = "loadGame";
             this.loadGame.Size = new System.Drawing.Size(154, 39);
             this.loadGame.TabIndex = 15;
@@ -394,7 +395,7 @@
             this.resetGame.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.resetGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetGame.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.resetGame.Location = new System.Drawing.Point(1213, 589);
+            this.resetGame.Location = new System.Drawing.Point(1213, 661);
             this.resetGame.Name = "resetGame";
             this.resetGame.Size = new System.Drawing.Size(154, 39);
             this.resetGame.TabIndex = 16;
@@ -402,12 +403,26 @@
             this.resetGame.UseVisualStyleBackColor = true;
             this.resetGame.Click += new System.EventHandler(this.resetGame_Click);
             // 
+            // hintOff
+            // 
+            this.hintOff.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.hintOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hintOff.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.hintOff.Location = new System.Drawing.Point(1213, 317);
+            this.hintOff.Name = "hintOff";
+            this.hintOff.Size = new System.Drawing.Size(154, 39);
+            this.hintOff.TabIndex = 17;
+            this.hintOff.Text = "Hint Off";
+            this.hintOff.UseVisualStyleBackColor = true;
+            this.hintOff.Click += new System.EventHandler(this.hintOff_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1370, 750);
+            this.Controls.Add(this.hintOff);
             this.Controls.Add(this.resetGame);
             this.Controls.Add(this.loadGame);
             this.Controls.Add(this.saveGame);
@@ -471,5 +486,6 @@
         private System.Windows.Forms.Button saveGame;
         private System.Windows.Forms.Button loadGame;
         private System.Windows.Forms.Button resetGame;
+        private System.Windows.Forms.Button hintOff;
     }
 }

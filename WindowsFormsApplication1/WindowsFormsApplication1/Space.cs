@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
         public int x;
         public int y;
         public int status = 0;
-        public int[] stati = { -2, -1, 0, 1, 2 }; //0=empty, 1=black placed, -1=white placed, 2=black tentative, -2=white tentative
+        public int[] stati = {-3, -2, -1, 0, 1, 2, 3 }; //0=empty, 1=black placed, -1=white placed, 2=black tentative, -2=white tentative, -3=white hint, 3=black hint
         private SolidBrush blackBrush = new SolidBrush(Color.Black);
         private SolidBrush whiteBrush = new SolidBrush(Color.White);
         public System.Drawing.Graphics pG;
@@ -44,7 +44,7 @@ namespace WindowsFormsApplication1
 
         public int placeDisc(bool black)
         {
-            if (status != 0)
+            if (status == 1 || status == -1)
             {
                 MessageBox.Show("That spot is taken!");
                 return 0;
@@ -183,19 +183,50 @@ namespace WindowsFormsApplication1
             {
                 if (black)
                 {
-                    status = 1;
+                    status = 3;
                     pG.FillRectangle(new SolidBrush(Color.Red), x, y, width, height);
                     pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
                     drawDisc(true);
                 }
                 else
                 {
-                    status = -1;
+                    status = -3;
                     pG.FillRectangle(new SolidBrush(Color.Red), x, y, width, height);
                     pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
                     drawDisc(false);
                 }
             }
+        }
+
+        public void confirmHint(bool black)
+        {
+            if (status == 0)
+            {
+                status = 0;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+            }
+            else if (status == 3)//need to fix or it will let you overwrite
+            {
+                status = 1;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+                drawDisc(true);
+            }
+            else if (status == -3) //need to fix or it will let you overwrite
+            {
+                status = -1;
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+                drawDisc(false);
+            }
+            else
+            {
+                MessageBox.Show("status is " + status);
+                pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
+                pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
+            }
+
         }
 
         public void unhint(bool black)
@@ -206,13 +237,13 @@ namespace WindowsFormsApplication1
                 pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
                 pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
             }
-            else if (status == 1)
+            else if (status == 3)
             {
                 status = 0;
                 pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);
                 pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
             }
-            else if (status == -1)
+            else if (status == -3)
             {
                 status = 0;
                 pG.FillRectangle(new SolidBrush(Color.Green), x, y, width, height);

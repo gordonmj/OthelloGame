@@ -33,6 +33,7 @@ namespace WindowsFormsApplication1
         bool gameStarted = false;
         private bool blackTurn = true;
         private bool flipManual = false;
+        public static bool hintOn = false;
 
         public Form1()
         {
@@ -185,7 +186,6 @@ namespace WindowsFormsApplication1
                 }
                 updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
             }
-            else
             {
                 int status = game.tryToPlace(e.Location, blackTurn);
                 if (status == -1)
@@ -197,9 +197,14 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("Illegal move!");
                     return;
                 }
+
                 updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
                 blackTurn = !blackTurn; //will have to move
                 setTurn();
+                if (hintOn)
+                {
+                    game.hint(blackTurn);
+                }
                 if (blackPlayer.getScore() + whitePlayer.getScore() >= 63)
                 {
                     hintToolStripMenuItem_Click(sender, e);
@@ -215,16 +220,16 @@ namespace WindowsFormsApplication1
         {
             if (whitePlayer == leftPlayer)
             {
-                leftPlayerScore.Text = "Alice's score: " + newWhite;
+                leftPlayerScore.Text = "Sophia's score: " + newWhite;
                 LeftDiscsLeft.Text = "Discs left: " + whitePlayer.discsLeft;
-                rightPlayerScore.Text = "Bob's score: " + newBlack;
+                rightPlayerScore.Text = "Alex's score: " + newBlack;
                 RightDiscsLeft.Text = "Discs left: " + blackPlayer.discsLeft;
             }
             else
             {
-                leftPlayerScore.Text = "Alice's score: " + newBlack;
+                leftPlayerScore.Text = "Sophia's score: " + newBlack;
                 LeftDiscsLeft.Text = "Discs left: " + blackPlayer.discsLeft;
-                rightPlayerScore.Text = "Bob's score: " + newWhite;
+                rightPlayerScore.Text = "Alex's score: " + newWhite;
                 RightDiscsLeft.Text = "Discs left: " + whitePlayer.discsLeft;
             }
 
@@ -253,6 +258,7 @@ namespace WindowsFormsApplication1
 
         private void hintToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            hintOn = true;
             int status = game.hint(blackTurn);
             if (status == -1)
             {
@@ -424,6 +430,11 @@ namespace WindowsFormsApplication1
         private void resetGame_Click(object sender, EventArgs e)
         {
             resetToolStripMenuItem_Click(sender, e);
+        }
+
+        private void hintOff_Click(object sender, EventArgs e)
+        {
+            hintOn = false;
         }
     }
 }
