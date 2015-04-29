@@ -7,6 +7,7 @@ C:\Users\Michael\Dropbox\School\Practicum\OthelloGame\WindowsFormsApplication1\W
 C:\Users\Michael\Dropbox\School\Practicum\OthelloGame\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 C:\Users\Michael\Dropbox\School\Practicum\OthelloGame\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
 C:\Users\Michael\Dropbox\School\Practicum\OthelloGame\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+<<<<<<< HEAD
 C:\Users\mgordon\Source\Repos\OthelloGame\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
 C:\Users\mgordon\Source\Repos\OthelloGame\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
 C:\Users\mgordon\Source\Repos\OthelloGame\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
@@ -16,3 +17,5 @@ C:\Users\mgordon\Source\Repos\OthelloGame\WindowsFormsApplication1\WindowsFormsA
 C:\Users\mgordon\Source\Repos\OthelloGame\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 C:\Users\mgordon\Source\Repos\OthelloGame\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\Users\mgordon\Source\Repos\OthelloGame\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+=======
+>>>>>>> 5d0d47f849ec6299af3c446b9d6ad2bc663394ed
