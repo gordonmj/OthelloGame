@@ -37,6 +37,9 @@
             this.hintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flipManuallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flipAutomaticallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -48,9 +51,15 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startGame = new System.Windows.Forms.Button();
+            this.switchTurn = new System.Windows.Forms.Button();
+            this.undo = new System.Windows.Forms.Button();
+            this.hint = new System.Windows.Forms.Button();
+            this.flipMan = new System.Windows.Forms.Button();
+            this.flipAuto = new System.Windows.Forms.Button();
+            this.saveGame = new System.Windows.Forms.Button();
+            this.loadGame = new System.Windows.Forms.Button();
+            this.resetGame = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +68,7 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.Green;
-            this.panel1.Location = new System.Drawing.Point(145, -102);
+            this.panel1.Location = new System.Drawing.Point(213, -102);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(860, 730);
             this.panel1.TabIndex = 0;
@@ -74,7 +83,7 @@
             this.exitToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1155, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(1387, 24);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -136,6 +145,27 @@
             this.flipAutomaticallyToolStripMenuItem.Text = "Flip automatically";
             this.flipAutomaticallyToolStripMenuItem.Click += new System.EventHandler(this.flipAutomaticallyToolStripMenuItem_Click);
             // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.loadToolStripMenuItem.Text = "Load old game";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.resetToolStripMenuItem.Text = "Reset";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -147,7 +177,7 @@
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel2.Location = new System.Drawing.Point(35, 20);
+            this.panel2.Location = new System.Drawing.Point(103, 20);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(110, 550);
             this.panel2.TabIndex = 2;
@@ -164,7 +194,7 @@
             this.panel6.Controls.Add(this.leftPlayerScore);
             this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel6.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.panel6.Location = new System.Drawing.Point(145, 629);
+            this.panel6.Location = new System.Drawing.Point(213, 629);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(854, 118);
             this.panel6.TabIndex = 4;
@@ -174,11 +204,11 @@
             // 
             this.RightDiscsLeft.AutoSize = true;
             this.RightDiscsLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RightDiscsLeft.Location = new System.Drawing.Point(639, 65);
+            this.RightDiscsLeft.Location = new System.Drawing.Point(624, 65);
             this.RightDiscsLeft.Name = "RightDiscsLeft";
             this.RightDiscsLeft.Size = new System.Drawing.Size(214, 37);
             this.RightDiscsLeft.TabIndex = 4;
-            this.RightDiscsLeft.Text = "Discs left: 32";
+            this.RightDiscsLeft.Text = "Discs left: 40";
             // 
             // LeftDiscsLeft
             // 
@@ -188,7 +218,7 @@
             this.LeftDiscsLeft.Name = "LeftDiscsLeft";
             this.LeftDiscsLeft.Size = new System.Drawing.Size(214, 37);
             this.LeftDiscsLeft.TabIndex = 3;
-            this.LeftDiscsLeft.Text = "Discs left: 32";
+            this.LeftDiscsLeft.Text = "Discs left: 40";
             // 
             // WhoseTurn
             // 
@@ -208,7 +238,7 @@
             this.rightPlayerScore.AutoSize = true;
             this.rightPlayerScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rightPlayerScore.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.rightPlayerScore.Location = new System.Drawing.Point(584, 5);
+            this.rightPlayerScore.Location = new System.Drawing.Point(567, 5);
             this.rightPlayerScore.Name = "rightPlayerScore";
             this.rightPlayerScore.Size = new System.Drawing.Size(268, 42);
             this.rightPlayerScore.TabIndex = 1;
@@ -231,7 +261,7 @@
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel3.Location = new System.Drawing.Point(1003, 20);
+            this.panel3.Location = new System.Drawing.Point(1071, 20);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(110, 550);
             this.panel3.TabIndex = 5;
@@ -240,48 +270,145 @@
             // panel4
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel4.Location = new System.Drawing.Point(35, 576);
+            this.panel4.Location = new System.Drawing.Point(103, 576);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(107, 100);
+            this.panel4.Size = new System.Drawing.Size(107, 112);
             this.panel4.TabIndex = 6;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // panel5
             // 
             this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel5.Location = new System.Drawing.Point(1006, 578);
+            this.panel5.Location = new System.Drawing.Point(1074, 578);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(107, 100);
+            this.panel5.Size = new System.Drawing.Size(107, 123);
             this.panel5.TabIndex = 7;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
-            // saveToolStripMenuItem
+            // startGame
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.startGame.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.startGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startGame.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.startGame.Location = new System.Drawing.Point(1221, 43);
+            this.startGame.Name = "startGame";
+            this.startGame.Size = new System.Drawing.Size(154, 39);
+            this.startGame.TabIndex = 8;
+            this.startGame.Text = "Start Game";
+            this.startGame.UseVisualStyleBackColor = true;
             // 
-            // loadToolStripMenuItem
+            // switchTurn
             // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.loadToolStripMenuItem.Text = "Load";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            this.switchTurn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.switchTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.switchTurn.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.switchTurn.Location = new System.Drawing.Point(1221, 110);
+            this.switchTurn.Name = "switchTurn";
+            this.switchTurn.Size = new System.Drawing.Size(154, 39);
+            this.switchTurn.TabIndex = 9;
+            this.switchTurn.Text = "Switch Turns";
+            this.switchTurn.UseVisualStyleBackColor = true;
             // 
-            // resetToolStripMenuItem
+            // undo
             // 
-            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.resetToolStripMenuItem.Text = "Reset";
-            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            this.undo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.undo.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.undo.Location = new System.Drawing.Point(1221, 182);
+            this.undo.Name = "undo";
+            this.undo.Size = new System.Drawing.Size(154, 39);
+            this.undo.TabIndex = 10;
+            this.undo.Text = "Undo";
+            this.undo.UseVisualStyleBackColor = true;
+            this.undo.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // hint
+            // 
+            this.hint.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.hint.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hint.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.hint.Location = new System.Drawing.Point(1221, 251);
+            this.hint.Name = "hint";
+            this.hint.Size = new System.Drawing.Size(154, 39);
+            this.hint.TabIndex = 11;
+            this.hint.Text = "Hint";
+            this.hint.UseVisualStyleBackColor = true;
+            // 
+            // flipMan
+            // 
+            this.flipMan.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.flipMan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flipMan.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.flipMan.Location = new System.Drawing.Point(1221, 319);
+            this.flipMan.Name = "flipMan";
+            this.flipMan.Size = new System.Drawing.Size(154, 39);
+            this.flipMan.TabIndex = 12;
+            this.flipMan.Text = "Flip Manually";
+            this.flipMan.UseVisualStyleBackColor = true;
+            // 
+            // flipAuto
+            // 
+            this.flipAuto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.flipAuto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flipAuto.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.flipAuto.Location = new System.Drawing.Point(1221, 384);
+            this.flipAuto.Name = "flipAuto";
+            this.flipAuto.Size = new System.Drawing.Size(154, 39);
+            this.flipAuto.TabIndex = 13;
+            this.flipAuto.Text = "Flip Auto";
+            this.flipAuto.UseVisualStyleBackColor = true;
+            // 
+            // saveGame
+            // 
+            this.saveGame.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.saveGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveGame.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.saveGame.Location = new System.Drawing.Point(1221, 453);
+            this.saveGame.Name = "saveGame";
+            this.saveGame.Size = new System.Drawing.Size(154, 39);
+            this.saveGame.TabIndex = 14;
+            this.saveGame.Text = "Save Game";
+            this.saveGame.UseVisualStyleBackColor = true;
+            // 
+            // loadGame
+            // 
+            this.loadGame.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.loadGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadGame.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.loadGame.Location = new System.Drawing.Point(1221, 519);
+            this.loadGame.Name = "loadGame";
+            this.loadGame.Size = new System.Drawing.Size(154, 39);
+            this.loadGame.TabIndex = 15;
+            this.loadGame.Text = "Load Game";
+            this.loadGame.UseVisualStyleBackColor = true;
+            // 
+            // resetGame
+            // 
+            this.resetGame.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.resetGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetGame.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.resetGame.Location = new System.Drawing.Point(1221, 589);
+            this.resetGame.Name = "resetGame";
+            this.resetGame.Size = new System.Drawing.Size(154, 39);
+            this.resetGame.TabIndex = 16;
+            this.resetGame.Text = "Reset Game";
+            this.resetGame.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1155, 750);
+            this.ClientSize = new System.Drawing.Size(1387, 750);
+            this.Controls.Add(this.resetGame);
+            this.Controls.Add(this.loadGame);
+            this.Controls.Add(this.saveGame);
+            this.Controls.Add(this.flipAuto);
+            this.Controls.Add(this.flipMan);
+            this.Controls.Add(this.hint);
+            this.Controls.Add(this.undo);
+            this.Controls.Add(this.switchTurn);
+            this.Controls.Add(this.startGame);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel6);
@@ -327,5 +454,14 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
+        private System.Windows.Forms.Button startGame;
+        private System.Windows.Forms.Button switchTurn;
+        private System.Windows.Forms.Button undo;
+        private System.Windows.Forms.Button hint;
+        private System.Windows.Forms.Button flipMan;
+        private System.Windows.Forms.Button flipAuto;
+        private System.Windows.Forms.Button saveGame;
+        private System.Windows.Forms.Button loadGame;
+        private System.Windows.Forms.Button resetGame;
     }
 }

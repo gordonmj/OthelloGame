@@ -153,7 +153,7 @@ namespace WindowsFormsApplication1
         }
 
 
-        public int stringToBoard(String fileName)
+        public int stringToBoard(String fileName, Player blackP, Player whiteP)
         {
             try
             {
@@ -166,6 +166,11 @@ namespace WindowsFormsApplication1
             char[] delims = { ' ', '\n' };
             string[] firstLine = lines[0].Split(delims);
             clearBoard();
+            blackP.setScore(0);
+            whiteP.setScore(0);
+            blackP.discsLeft = 40;
+            whiteP.discsLeft = 40;
+            int piecesPlaced = 0;
             for (int r = 0; r < 8; r++)
             {
                 string[] nextLine = lines[r].Split(delims);
@@ -177,18 +182,25 @@ namespace WindowsFormsApplication1
                     if (stat == 1)
                     {
                         newSpace.placeDisc(true);
+                        blackP.raiseScore(1);
+                        piecesPlaced = piecesPlaced+1;
                     }
                     else if (stat == -1)
                     {
                         newSpace.placeDisc(false);
+                        whiteP.raiseScore(1);
+                        piecesPlaced = piecesPlaced + 1;
                     }
                     newSpace.status = stat;
                     }
                 }
+            blackP.discsLeft = 40 - (piecesPlaced / 2);
+            whiteP.discsLeft = 40 - (piecesPlaced / 2);
             }
             catch (Exception e)
             {
-                MessageBox.Show("Failure. Please try again with a valid text file.");
+
+                MessageBox.Show(e.ToString());
             }
             return 0;
         }

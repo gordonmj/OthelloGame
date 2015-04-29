@@ -95,7 +95,7 @@ namespace WindowsFormsApplication1
             pG2 = panel2.CreateGraphics();
             leftStack = new DiscStack(panel2);
             leftStack.setUpStack(pG2, panel2);
-            leftStack.drawStack(32);
+            leftStack.drawStack(40);
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -103,7 +103,7 @@ namespace WindowsFormsApplication1
             pG3 = panel3.CreateGraphics();
             rightStack = new DiscStack(panel3);
             rightStack.setUpStack(pG3, panel3);
-            rightStack.drawStack(32);
+            rightStack.drawStack(40);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -200,6 +200,11 @@ namespace WindowsFormsApplication1
                 updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
                 blackTurn = !blackTurn; //will have to move
                 setTurn();
+                if (blackPlayer.getScore() + whitePlayer.getScore() >= 63)
+                {
+                    hintToolStripMenuItem_Click(sender, e);
+                    hintToolStripMenuItem_Click(sender, e);
+                }
             }
 
 
@@ -332,14 +337,31 @@ namespace WindowsFormsApplication1
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!gameStarted)
+            {
+                MessageBox.Show("Please start the game first by selecting Game > Choose Color");
+                return;
+            }
             OpenFileDialog oFD = new OpenFileDialog();
             oFD.Filter = "Plaintext Files|*.txt";
             oFD.Title = "Select a Plaintext File";
             if (oFD.ShowDialog() == DialogResult.OK)
             {
                 String fileName = oFD.FileName;
-                game.board.stringToBoard(fileName);
+                game.board.stringToBoard(fileName,blackPlayer,whitePlayer);
+                updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
+                if (ReferenceEquals(leftPlayer, blackPlayer))
+                {
+                    leftStack.drawStack(blackPlayer.discsLeft);
+                    rightStack.drawStack(whitePlayer.discsLeft);
+                }
+                else
+                {
+                    rightStack.drawStack(blackPlayer.discsLeft);
+                    leftStack.drawStack(whitePlayer.discsLeft);
+                }
             }
+
         }
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -350,12 +372,17 @@ namespace WindowsFormsApplication1
             game.board.initConfig();
             blackPlayer.setScore(2);
             whitePlayer.setScore(2);
-            blackPlayer.discsLeft = 32;
-            whitePlayer.discsLeft = 32;
+            blackPlayer.discsLeft = 40;
+            whitePlayer.discsLeft = 40;
             blackTurn = true;
             WhoseTurn.Text = "Black's turn";
             WhoseTurn.ForeColor = Color.Black; 
             updateScoreboard(blackPlayer.getScore(), whitePlayer.getScore());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
