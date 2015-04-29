@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         public DiscStack blackStack;
         public int[,] directions = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 } };
         public List<Space> toFlip = new List<Space>();
+        public List<Space> toHint = new List<Space>();
         public static bool isBlack;
 
         public Game()
@@ -160,7 +161,7 @@ namespace WindowsFormsApplication1
                     toFlip.ForEach(confirm);
                     //return score
                     score = toFlip.Count();
-                    toFlip.Clear();
+                    //toFlip.Clear();
                     return score;                    
                     /*
                     DialogResult answer = MessageBox.Show("Confirm that move?", "Confirm?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -232,18 +233,19 @@ namespace WindowsFormsApplication1
                     }
                     here.placeDisc(black);
                     int flips = findFlips(here, true);
-                    toFlip.Clear();
-                    here.eraseDisc();
+                    //toFlip.Clear();
                     if (flips > 0)
                     {
                         //MessageBox.Show(r+","+c+" has "+flips);
                         scores[r, c] = flips;
+                        toHint.Add(here);
                         if (flips > scores[maxR, maxC])
                         {
                             maxR = r;
                             maxC = c;
                         }//if max
                     }// if positive (unnec?)
+                    here.eraseDisc();
                 }//for c
             }//for r
             //MessageBox.Show("max is " + scores[maxR, maxC] + " at " + maxR + ", " + maxC);
@@ -253,15 +255,22 @@ namespace WindowsFormsApplication1
             }
             Space max = board.board[maxR, maxC];
             //MessageBox.Show("Max is at " + maxR + "," + maxC + " with flips: "+scores[maxR,maxC]);
-            max.placeDisc(!isBlack);
-            findFlips(max, true);
+            foreach(Space spot in toHint){
+                //spot.placeDisc(!isBlack);
+                //findFlips(spot, true);
+                //spot.highLight();
+            }
+            //max.placeDisc(!isBlack);
+            //findFlips(max, true);
+            toHint.ForEach(hint);
             toFlip.ForEach(highlight);
-            max.highLight();
+            //max.highLight();
             max.status = 0;
             MessageBox.Show("Here's your hint");
                 toFlip.ForEach(unhighlight);
+                toHint.ForEach(unhint);
                 //return score
-                max.unhighLight();
+//                max.unhighLight();
                 max.eraseDisc();
                 toFlip.Clear();
             //if (score == -1)

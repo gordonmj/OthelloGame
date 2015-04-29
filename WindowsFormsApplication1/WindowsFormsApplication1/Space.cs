@@ -184,14 +184,14 @@ namespace WindowsFormsApplication1
                 if (black)
                 {
                     status = 1;
-                    pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
+                    pG.FillRectangle(new SolidBrush(Color.Red), x, y, width, height);
                     pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
                     drawDisc(true);
                 }
                 else
                 {
                     status = -1;
-                    pG.FillRectangle(new SolidBrush(Color.YellowGreen), x, y, width, height);
+                    pG.FillRectangle(new SolidBrush(Color.Red), x, y, width, height);
                     pG.DrawRectangle(new Pen(blackBrush), x, y, width, height);
                     drawDisc(false);
                 }
