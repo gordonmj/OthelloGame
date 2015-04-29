@@ -157,6 +157,12 @@ namespace WindowsFormsApplication1
                 else
                 {
                     toFlip.ForEach(highlight);
+                    toFlip.ForEach(confirm);
+                    //return score
+                    score = toFlip.Count();
+                    toFlip.Clear();
+                    return score;                    
+                    /*
                     DialogResult answer = MessageBox.Show("Confirm that move?", "Confirm?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (answer == DialogResult.Yes)
                     {
@@ -176,6 +182,7 @@ namespace WindowsFormsApplication1
                         toFlip.Clear();
                         return -1;
                     }
+                     */
                     return score;
                 }//flips pos
             }//is hint search

@@ -382,7 +382,48 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            game.undo();
+        }
 
+        private void startGame_Click(object sender, EventArgs e)
+        {
+            chooseColorsToolStripMenuItem_Click(sender, e);
+        }
+
+        private void switchTurn_Click(object sender, EventArgs e)
+        {
+            switchTurnToolStripMenuItem_Click(sender, e);
+        }
+
+        private void hint_Click(object sender, EventArgs e)
+        {
+            hintToolStripMenuItem_Click(sender, e);
+        }
+
+        private void flipMan_Click(object sender, EventArgs e)
+        {
+            flipManual = true;
+            WhoseTurn.Text = "Manual flip mode";
+        }
+
+        private void flipAuto_Click(object sender, EventArgs e)
+        {
+            flipAutomaticallyToolStripMenuItem_Click(sender, e);
+        }
+
+        private void saveGame_Click(object sender, EventArgs e)
+        {
+            saveToolStripMenuItem_Click(sender, e);
+        }
+
+        private void loadGame_Click(object sender, EventArgs e)
+        {
+            loadToolStripMenuItem_Click(sender, e);
+        }
+
+        private void resetGame_Click(object sender, EventArgs e)
+        {
+            resetToolStripMenuItem_Click(sender, e);
         }
     }
 }
