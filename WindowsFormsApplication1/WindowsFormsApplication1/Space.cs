@@ -44,10 +44,23 @@ namespace WindowsFormsApplication1
 
         public int placeDisc(bool black)
         {
-            if (status == 1 || status == -1)
+            if ((status == 1 || status == -1) && !Form1.flipManual)
             {
                 MessageBox.Show("That spot is taken!");
                 return 0;
+            }
+            if (Form1.flipManual)
+            {
+                if (status == 1)
+                {
+                    status = -1;
+                    return -1;
+                }
+                else
+                {
+                    status = 1;
+                    return 1;
+                }
             }
             drawDisc(black);
             if (black)

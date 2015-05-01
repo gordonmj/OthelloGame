@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1
         bool noMoreMoves = false;
         bool gameStarted = false;
         private bool blackTurn = true;
-        private bool flipManual = false;
+        public static bool flipManual = false;
         public static bool hintOn = false;
 
         public Form1()
@@ -192,7 +192,7 @@ namespace WindowsFormsApplication1
                 {
                     return;
                 }
-                if (status == 0)
+                if (status == 0 && !flipManual)
                 {
                     MessageBox.Show("Illegal move!");
                     return;

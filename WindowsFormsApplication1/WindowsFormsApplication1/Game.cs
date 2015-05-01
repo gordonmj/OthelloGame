@@ -164,7 +164,7 @@ namespace WindowsFormsApplication1
             //MessageBox.Show("Number to flip: " + toFlip.Count());
             if (!isHintSearch)
             {
-                if (toFlip.Count() <= 0)
+                if (toFlip.Count() <= 0 && !Form1.flipManual)
                 {
                     MessageBox.Show("Illegal move! Try again!");
                     sp.eraseDisc();
@@ -284,6 +284,7 @@ namespace WindowsFormsApplication1
             }
             //max.placeDisc(!isBlack);
             //findFlips(max, true);
+            toHint.RemoveAt(0);
             toHint.ForEach(hint);
             toFlip.ForEach(highlight);
             //max.highLight();
